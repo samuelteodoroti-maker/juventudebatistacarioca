@@ -483,7 +483,7 @@ function JBCLanding() {
       </div>
 
       {/* HISTÓRIA */}
-      <section id="historia" className="py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
+      <section id="historia" className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-7xl grid lg:grid-cols-12 gap-10 lg:gap-12">
           <div className="lg:col-span-5" data-reveal>
             <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
@@ -774,7 +774,7 @@ function JBCLanding() {
       </section>
 
       {/* CONECTE-SE */}
-      <section id="conecte" className="py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
+      <section id="conecte" className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12 sm:mb-16" data-reveal>
             <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
@@ -819,7 +819,7 @@ function JBCLanding() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border bg-muted/30">
+      <footer className="cv-auto border-t border-border bg-muted/30">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 py-14 sm:py-16">
           <div className="grid md:grid-cols-12 gap-10 md:gap-12">
             <div className="md:col-span-5">
