@@ -88,6 +88,21 @@ const EVENTS: EventItem[] = [
   },
 ];
 
+type EventStatus = "open" | "upcoming" | "closed";
+
+function getEventStatus(e: EventItem): EventStatus {
+  if (e.badgeLabel?.toLowerCase().includes("breve")) return "upcoming";
+  if (e.closed) return "closed";
+  return "open";
+}
+
+const STATUS_FILTERS: { id: "all" | EventStatus; label: string }[] = [
+  { id: "all", label: "Todos" },
+  { id: "open", label: "Inscrições abertas" },
+  { id: "upcoming", label: "Em breve" },
+  { id: "closed", label: "Encerrado" },
+];
+
 const SOCIALS = [
   { name: "Instagram", handle: "@jbcarioca", href: "https://www.instagram.com/jbcarioca/", Icon: Instagram },
   { name: "Facebook", handle: "/jbcarioca", href: "https://www.facebook.com/jbcarioca", Icon: Facebook },
