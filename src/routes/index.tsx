@@ -320,6 +320,9 @@ function JBCLanding() {
           </div>
 
           <div className="flex items-center gap-2">
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
             <button
               onClick={() => scrollTo("eventos")}
               className="hidden sm:inline-flex group items-center gap-2 rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition focus-ring"
