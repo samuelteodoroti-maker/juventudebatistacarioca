@@ -42,6 +42,19 @@ type EventItem = {
 
 const EVENTS: EventItem[] = [
   {
+    title: "Vigília da JBC · Somos Um",
+    subtitle:
+      "Uma noite inteira em oração, adoração e comunhão — numa mesma paixão. Chegue cedo, traga um amigo e viva essa experiência com a gente.",
+    tag: "Vigília",
+    href: "https://www.google.com/maps/search/?api=1&query=Igreja+Batista+do+Meier+Rua+Hermengarda+31+Rio+de+Janeiro",
+    closed: false,
+    image: vigiliaImg.url,
+    date: "31 de julho · 22h às 6h",
+    location: "Igreja Batista do Méier · Rua Hermengarda, 31 — RJ",
+    badgeLabel: "Em breve",
+    ctaLabel: "Ver local no mapa",
+  },
+  {
     title: "Audição JBC Music",
     subtitle:
       "Não é sobre palco — é sobre altar, adoração e um coração disponível para servir. Se você tem entre 18 e 40 anos e é membro de uma igreja batista filiada à Convenção Batista Carioca, esse lugar pode ser seu.",
