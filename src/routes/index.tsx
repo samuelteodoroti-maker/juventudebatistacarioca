@@ -80,8 +80,8 @@ function JBCLanding() {
   return (
     <div className="min-h-screen bg-background text-foreground font-body antialiased selection:bg-foreground selection:text-background">
       <style>{`
-        :root { --font-display: 'Space Grotesk', system-ui, sans-serif; --font-body: 'Inter', system-ui, sans-serif; }
-        .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+        :root { --font-display: 'Montserrat', system-ui, sans-serif; --font-body: 'Inter', system-ui, sans-serif; }
+        .font-display { font-family: var(--font-display); letter-spacing: -0.02em; font-weight: 800; }
         .font-body { font-family: var(--font-body); }
         [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
         [data-reveal].is-visible { opacity: 1; transform: none; }
