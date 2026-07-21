@@ -101,8 +101,11 @@ function JBCLanding() {
         }`}
       >
         <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
-          <a href="#top" className="font-display text-xl font-bold tracking-tight">
-            JBC<span className="text-muted-foreground">.</span>
+          <a href="#top" className="flex items-center gap-3">
+            <img src={jbcLogo.url} alt="JBC" className="h-10 w-10 rounded-lg object-cover" />
+            <span className="font-display text-xl font-black tracking-tight">
+              JBC<span className="text-accent">.</span>
+            </span>
           </a>
           <div className="hidden md:flex items-center gap-8 text-sm">
             <button onClick={() => scrollTo("historia")} className="hover:text-foreground/70 transition">Nossa História</button>
