@@ -444,7 +444,7 @@ function JBCLanding() {
                           : "bg-accent text-accent-foreground border-accent"
                       }`}
                     >
-                      {e.closed ? "Encerrado" : "Inscrições abertas"}
+                      {e.badgeLabel ?? (e.closed ? "Encerrado" : "Inscrições abertas")}
                     </span>
                     <span className="font-display text-2xl font-black text-background/90 drop-shadow">
                       0{i + 1}
