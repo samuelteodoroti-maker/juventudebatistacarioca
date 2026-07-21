@@ -415,7 +415,7 @@ function JBCLanding() {
             className="mt-6 sm:mt-8 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             Um movimento de jovens que acredita em conexão real, propósito e comunidade.
-            Mais de 100 anos de história — e o melhor ainda está por vir.
+            103 anos de história — e o melhor ainda está por vir.
           </p>
 
           <div data-reveal className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
@@ -479,7 +479,7 @@ function JBCLanding() {
               <span>CONEXÃO</span><span className="text-accent">◆</span>
               <span>PROPÓSITO</span><span className="text-accent">◆</span>
               <span>COMUNIDADE</span><span className="text-accent">◆</span>
-              <span>+100 ANOS</span><span className="text-accent">◆</span>
+              <span>103 ANOS</span><span className="text-accent">◆</span>
               <span>JBC</span><span className="text-accent">◆</span>
             </div>
           ))}
@@ -494,7 +494,7 @@ function JBCLanding() {
               — Nossa História
             </div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1]">
-              +100 anos
+              103 anos
               <br />
               de uma mesma
               <br />
@@ -834,7 +834,7 @@ function JBCLanding() {
                 </div>
               </div>
               <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
-                Juventude Batista Carioca — +100 anos conectando jovens, fé e comunidade
+                Juventude Batista Carioca — 103 anos conectando jovens, fé e comunidade
                 no Rio de Janeiro.
               </p>
               <a
