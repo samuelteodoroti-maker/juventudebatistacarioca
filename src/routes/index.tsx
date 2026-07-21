@@ -35,6 +35,8 @@ type EventItem = {
   image: string;
   date?: string;
   location?: string;
+  badgeLabel?: string;
+  ctaLabel?: string;
 };
 
 const EVENTS: EventItem[] = [
