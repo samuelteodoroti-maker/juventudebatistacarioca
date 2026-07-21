@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
+  ArrowUp,
   Instagram,
   Facebook,
   Youtube,
@@ -17,6 +18,7 @@ import {
   X,
   Search,
   SlidersHorizontal,
+  Heart,
 } from "lucide-react";
 import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
