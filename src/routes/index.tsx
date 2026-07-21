@@ -537,7 +537,7 @@ function JBCLanding() {
                 </div>
               </div>
               <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
-                Juventude Batista Carioca — 100 anos conectando jovens, fé e comunidade
+                Juventude Batista Carioca — +100 anos conectando jovens, fé e comunidade
                 no Rio de Janeiro.
               </p>
             </div>
