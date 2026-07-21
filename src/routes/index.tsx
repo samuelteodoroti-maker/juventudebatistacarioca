@@ -719,7 +719,8 @@ function JBCLanding() {
                   </div>
                 </a>
               ))}
-            </div>
+              </div>
+            </>
           )}
         </div>
       </section>
