@@ -288,31 +288,54 @@ function JBCLanding() {
                 target="_blank"
                 rel="noreferrer"
                 data-reveal
-                className="group relative overflow-hidden rounded-3xl border border-border bg-background p-8 min-h-[340px] flex flex-col justify-between hover:border-foreground transition-all duration-500 hover:-translate-y-2"
+                className="group relative overflow-hidden rounded-3xl border border-border bg-background flex flex-col hover:border-foreground transition-all duration-500 hover:-translate-y-2"
               >
-                <div className="absolute inset-0 bg-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                <div className="relative z-10 group-hover:text-background transition-colors duration-500">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs uppercase tracking-widest text-muted-foreground group-hover:text-background/60">
-                      {e.tag}
-                    </span>
-                    <span className="font-display text-2xl font-bold opacity-40">0{i + 1}</span>
+                {e.image && (
+                  <div className="relative overflow-hidden aspect-[16/10] bg-muted">
+                    <img
+                      src={e.image}
+                      alt={e.title}
+                      className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {e.closed && (
+                      <span className="absolute top-4 left-4 z-10 rounded-full bg-background/90 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-widest font-semibold text-foreground border border-border">
+                        Inscrições encerradas
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                <div className="relative p-8 flex-1 flex flex-col justify-between min-h-[280px]">
+                  <div className="absolute inset-0 bg-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                  <div className="relative z-10 group-hover:text-background transition-colors duration-500">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs uppercase tracking-widest text-muted-foreground group-hover:text-background/60">
+                        {e.tag}
+                      </span>
+                      <span className="font-display text-2xl font-bold opacity-40">0{i + 1}</span>
+                    </div>
+
+                    <div className={e.image ? "mt-6" : "mt-24"}>
+                      {!e.image && <Calendar className="h-6 w-6 mb-6 opacity-70" />}
+                      <h3 className="font-display text-2xl font-bold leading-tight">
+                        {e.title}
+                      </h3>
+                      {e.meta && (
+                        <div className="mt-3 flex items-start gap-2 text-xs uppercase tracking-widest text-accent group-hover:text-accent/90 font-semibold">
+                          <Calendar className="h-3.5 w-3.5 mt-0.5 shrink-0" />
+                          <span>{e.meta}</span>
+                        </div>
+                      )}
+                      <p className="mt-3 text-sm text-muted-foreground group-hover:text-background/70">
+                        {e.subtitle}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="mt-24">
-                    <Calendar className="h-6 w-6 mb-6 opacity-70" />
-                    <h3 className="font-display text-2xl font-bold leading-tight">
-                      {e.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground group-hover:text-background/70">
-                      {e.subtitle}
-                    </p>
+                  <div className="relative z-10 mt-8 inline-flex items-center gap-2 text-sm font-medium group-hover:text-background transition-colors duration-500">
+                    {e.closed ? "Ver detalhes" : "Inscrever-se"}
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
                   </div>
-                </div>
-
-                <div className="relative z-10 mt-8 inline-flex items-center gap-2 text-sm font-medium group-hover:text-background transition-colors duration-500">
-                  Inscrever-se
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
                 </div>
               </a>
             ))}
