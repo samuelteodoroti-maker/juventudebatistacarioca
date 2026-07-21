@@ -261,28 +261,14 @@ function JBCLanding() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-body antialiased selection:bg-accent selection:text-accent-foreground">
-      <style>{`
-        :root { --font-display: 'Montserrat', system-ui, sans-serif; --font-body: 'Inter', system-ui, sans-serif; }
-        .font-display { font-family: var(--font-display); letter-spacing: -0.02em; font-weight: 800; }
-        .font-body { font-family: var(--font-body); }
-        [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
-        [data-reveal].is-visible { opacity: 1; transform: none; }
-        .marquee { animation: marquee 25s linear infinite; }
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .focus-ring:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 9999px; }
-        @media (prefers-reduced-motion: reduce) {
-          [data-reveal] { opacity: 1; transform: none; transition: none; }
-          .marquee { animation: none; }
-        }
-      `}</style>
-
+    <div className="min-h-screen bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground">
       <a
         href="#top"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-accent-foreground focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
       >
         Pular para o conteúdo
       </a>
+
 
       {/* NAV */}
       <header
