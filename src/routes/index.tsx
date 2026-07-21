@@ -190,15 +190,25 @@ function JBCLanding() {
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
+    let raf = 0;
+    const update = () => {
       const y = window.scrollY;
       setScrolled(y > 20);
       setShowTopBtn(y > 600);
+      raf = 0;
     };
-    onScroll();
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
+
 
   useEffect(() => {
     const ids = ["top", ...NAV.map((n) => n.id)];
