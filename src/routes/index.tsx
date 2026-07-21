@@ -114,7 +114,7 @@ function JBCLanding() {
           </div>
           <button
             onClick={() => scrollTo("eventos")}
-            className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-4 py-2 text-sm font-medium hover:opacity-90 transition"
+            className="group inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
           >
             Participar
             <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition" />
