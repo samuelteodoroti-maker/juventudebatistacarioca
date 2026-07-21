@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
+import temposDePazImg from "@/assets/tempos-de-paz.png.asset.json";
+import copaJbcImg from "@/assets/copa-jbc.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: JBCLanding,
