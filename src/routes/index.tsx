@@ -257,7 +257,7 @@ function JBCLanding() {
             className="mt-6 sm:mt-8 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             Um movimento de jovens que acredita em conexão real, propósito e comunidade.
-            Cem anos de história — e o melhor ainda está por vir.
+            Mais de 100 anos de história — e o melhor ainda está por vir.
           </p>
 
           <div data-reveal className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
