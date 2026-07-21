@@ -21,6 +21,7 @@ import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
 import temposDePazImg from "@/assets/tempos-de-paz.png.asset.json";
 import copaJbcImg from "@/assets/copa-jbc.png.asset.json";
 import jbcMusicImg from "@/assets/jbc-music.jpg.asset.json";
+import vigiliaImg from "@/assets/vigilia-jbc.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: JBCLanding,
