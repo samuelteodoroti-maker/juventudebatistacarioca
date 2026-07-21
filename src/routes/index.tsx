@@ -553,7 +553,9 @@ function JBCLanding() {
                   rel="noreferrer"
                   data-reveal
                   className="group relative overflow-hidden rounded-3xl border border-border bg-card flex flex-col hover:border-accent/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1.5 focus-ring"
-                  aria-label={`${e.title}${e.closed ? " — inscrições encerradas" : " — inscrever-se"}`}
+                  aria-label={`${e.title} — ${
+                    e.badgeLabel ?? (e.closed ? "inscrições encerradas" : "inscrever-se")
+                  }`}
                 >
                   <div className="relative overflow-hidden aspect-[16/10] bg-muted">
                     <img
