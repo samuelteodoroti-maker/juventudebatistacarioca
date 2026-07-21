@@ -472,7 +472,7 @@ function JBCLanding() {
       </section>
 
       {/* MARQUEE */}
-      <div className="border-y border-border overflow-hidden py-5 sm:py-6 bg-muted/30">
+      <div className="marquee-wrap border-y border-border overflow-hidden py-5 sm:py-6 bg-muted/30" aria-hidden="true">
         <div className="marquee flex whitespace-nowrap gap-10 sm:gap-16 font-display text-2xl sm:text-4xl md:text-5xl font-bold">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex gap-10 sm:gap-16 items-center pr-10 sm:pr-16">
