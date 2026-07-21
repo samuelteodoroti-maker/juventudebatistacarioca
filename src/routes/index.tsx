@@ -543,7 +543,7 @@ function JBCLanding() {
       {/* EVENTOS */}
       <section
         id="eventos"
-        className="py-24 sm:py-32 px-5 sm:px-6 lg:px-10 bg-muted/30 border-y border-border"
+        className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10 bg-muted/30 border-y border-border"
       >
         <div className="mx-auto max-w-7xl">
           <div
