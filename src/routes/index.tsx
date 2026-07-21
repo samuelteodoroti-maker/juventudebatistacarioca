@@ -486,7 +486,7 @@ function JBCLanding() {
                       e.closed ? "text-muted-foreground" : "text-accent"
                     }`}
                   >
-                    {e.closed ? "Ver detalhes" : "Inscrever-se agora"}
+                    {e.ctaLabel ?? (e.closed ? "Ver detalhes" : "Inscrever-se agora")}
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
                   </div>
                 </div>
