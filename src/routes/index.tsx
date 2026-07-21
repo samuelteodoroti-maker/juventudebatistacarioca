@@ -21,6 +21,7 @@ import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
 import temposDePazImg from "@/assets/tempos-de-paz.png.asset.json";
 import copaJbcImg from "@/assets/copa-jbc.png.asset.json";
 import jbcMusicImg from "@/assets/jbc-music.jpg.asset.json";
+import vigiliaImg from "@/assets/vigilia-jbc.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: JBCLanding,
@@ -35,9 +36,24 @@ type EventItem = {
   image: string;
   date?: string;
   location?: string;
+  badgeLabel?: string;
+  ctaLabel?: string;
 };
 
 const EVENTS: EventItem[] = [
+  {
+    title: "Vigília da JBC · Somos Um",
+    subtitle:
+      "Uma noite inteira em oração, adoração e comunhão — numa mesma paixão. Chegue cedo, traga um amigo e viva essa experiência com a gente.",
+    tag: "Vigília",
+    href: "https://www.google.com/maps/search/?api=1&query=Igreja+Batista+do+Meier+Rua+Hermengarda+31+Rio+de+Janeiro",
+    closed: false,
+    image: vigiliaImg.url,
+    date: "31 de julho · 22h às 6h",
+    location: "Igreja Batista do Méier · Rua Hermengarda, 31 — RJ",
+    badgeLabel: "Em breve",
+    ctaLabel: "Ver local no mapa",
+  },
   {
     title: "Audição JBC Music",
     subtitle:
@@ -428,7 +444,7 @@ function JBCLanding() {
                           : "bg-accent text-accent-foreground border-accent"
                       }`}
                     >
-                      {e.closed ? "Encerrado" : "Inscrições abertas"}
+                      {e.badgeLabel ?? (e.closed ? "Encerrado" : "Inscrições abertas")}
                     </span>
                     <span className="font-display text-2xl font-black text-background/90 drop-shadow">
                       0{i + 1}
@@ -470,7 +486,7 @@ function JBCLanding() {
                       e.closed ? "text-muted-foreground" : "text-accent"
                     }`}
                   >
-                    {e.closed ? "Ver detalhes" : "Inscrever-se agora"}
+                    {e.ctaLabel ?? (e.closed ? "Ver detalhes" : "Inscrever-se agora")}
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
                   </div>
                 </div>
