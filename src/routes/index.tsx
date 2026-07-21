@@ -604,7 +604,38 @@ function JBCLanding() {
               </button>
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <>
+              <div
+                className="mb-5 flex items-center justify-between text-xs text-muted-foreground"
+                aria-live="polite"
+              >
+                <span>
+                  Mostrando{" "}
+                  <strong className="text-foreground">{filteredEvents.length}</strong>{" "}
+                  {filteredEvents.length === 1 ? "evento" : "eventos"}
+                  {statusFilter !== "all" && (
+                    <>
+                      {" "}·{" "}
+                      <span className="text-accent">
+                        {STATUS_FILTERS.find((s) => s.id === statusFilter)?.label}
+                      </span>
+                    </>
+                  )}
+                </span>
+                {(query || statusFilter !== "all") && (
+                  <button
+                    onClick={() => {
+                      setQuery("");
+                      setStatusFilter("all");
+                    }}
+                    className="text-accent hover:underline font-semibold"
+                  >
+                    Limpar
+                  </button>
+                )}
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+
               {filteredEvents.map((e, i) => (
                 <a
                   key={e.title}
