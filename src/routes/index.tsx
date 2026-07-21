@@ -10,8 +10,11 @@ import {
   Sparkles,
   Users,
   ChevronDown,
+  Download,
+  BookOpen,
 } from "lucide-react";
 import jbcLogo from "@/assets/jbc-logo.png.asset.json";
+import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: JBCLanding,
