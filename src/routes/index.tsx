@@ -218,34 +218,6 @@ function JBCLanding() {
               coragem, o mesmo sonho e um chamado renovado para os jovens do Rio.
             </p>
 
-            <a
-              href="https://drive.google.com/file/d/14V7lZXKmJ5C8kuTTSudLSCBrjw3c-5ZW/view?usp=sharing"
-              target="_blank"
-              rel="noreferrer"
-              className="group mt-8 relative block overflow-hidden rounded-3xl border border-border bg-foreground text-background p-8 md:p-10 hover:scale-[1.01] transition-transform"
-            >
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-background blur-3xl" />
-              </div>
-              <div className="relative flex items-start gap-6">
-                <div className="shrink-0 grid place-items-center h-16 w-16 rounded-2xl bg-background/10 border border-background/20">
-                  <PlayCircle className="h-8 w-8" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="text-xs uppercase tracking-widest text-background/60">Material Especial</div>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold mt-2">
-                    Celebração dos 100 anos da JBC
-                  </h3>
-                  <p className="mt-2 text-background/70">
-                    Assista ao conteúdo comemorativo em vídeo.
-                  </p>
-                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium">
-                    Abrir material
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
-                  </div>
-                </div>
-              </div>
-            </a>
 
             <a
               href={ebookAsset.url}
