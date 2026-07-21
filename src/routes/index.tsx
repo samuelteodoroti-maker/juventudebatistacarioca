@@ -284,7 +284,7 @@ function JBCLanding() {
             className="flex items-center gap-2.5 focus-ring"
             aria-label="Ir para o topo"
           >
-            <img src={jbcLogo.url} alt="" className="h-9 w-9 rounded-lg object-cover" />
+            <img src={jbcLogo.url} alt="" width={36} height={36} decoding="async" fetchPriority="high" className="h-9 w-9 rounded-lg object-cover" />
             <span className="font-display text-lg font-black tracking-tight">
               JBC<span className="text-accent">.</span>
             </span>
@@ -827,7 +827,7 @@ function JBCLanding() {
           <div className="grid md:grid-cols-12 gap-10 md:gap-12">
             <div className="md:col-span-5">
               <div className="flex items-center gap-3">
-                <img src={jbcLogo.url} alt="" className="h-11 w-11 rounded-lg object-cover" />
+                <img src={jbcLogo.url} alt="" width={44} height={44} loading="lazy" decoding="async" className="h-11 w-11 rounded-lg object-cover" />
                 <div className="font-display text-3xl sm:text-4xl font-black">
                   JBC<span className="text-accent">.</span>
                 </div>
