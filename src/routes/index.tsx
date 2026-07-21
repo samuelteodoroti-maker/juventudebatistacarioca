@@ -246,6 +246,32 @@ function JBCLanding() {
                 </div>
               </div>
             </a>
+
+            <a
+              href={ebookAsset.url}
+              download="E-BOOK_JBC_100_anos.pdf"
+              className="group relative block overflow-hidden rounded-3xl border border-accent/40 bg-accent/10 p-8 md:p-10 hover:bg-accent/20 transition-colors"
+            >
+              <div className="relative flex items-start gap-6">
+                <div className="shrink-0 grid place-items-center h-16 w-16 rounded-2xl bg-accent/20 border border-accent/40 text-accent">
+                  <BookOpen className="h-8 w-8" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs uppercase tracking-widest text-accent font-semibold">E-book · 100 anos</div>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold mt-2">
+                    Baixe o e-book da história da JBC
+                  </h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Um século de fé, comunidade e juventude em um material comemorativo — grátis para download.
+                  </p>
+                  <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+                    <Download className="h-4 w-4" />
+                    Baixar PDF
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </section>
