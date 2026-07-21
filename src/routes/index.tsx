@@ -687,7 +687,7 @@ function JBCLanding() {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
 
-              {filteredEvents.map((e) => (
+              {filteredEvents.map((e, i) => (
                 <a
                   key={e.title}
                   href={e.href}
@@ -702,11 +702,14 @@ function JBCLanding() {
                     <img
                       src={e.image}
                       alt=""
-                      loading="lazy"
+                      loading={i < 2 ? "eager" : "lazy"}
+                      decoding="async"
+                      fetchPriority={i === 0 ? "high" : "auto"}
                       className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-105 ${
                         e.closed ? "grayscale-[45%] group-hover:grayscale-0" : ""
                       }`}
                     />
+
                     {/* subtle bottom fade into card body */}
                     <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card via-card/70 to-transparent" />
                     {/* neutral top scrim for badge legibility on any theme */}
