@@ -18,7 +18,11 @@ import {
   Search,
   SlidersHorizontal,
   Heart,
+  Sun,
+  Moon,
+  Monitor,
 } from "lucide-react";
+import { useTheme, type Theme } from "@/lib/theme";
 import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
 import temposDePazImg from "@/assets/tempos-de-paz.png.asset.json";
