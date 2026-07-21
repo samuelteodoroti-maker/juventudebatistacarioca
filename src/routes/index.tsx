@@ -391,6 +391,7 @@ function JBCLanding() {
           />
           <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl animate-pulse [animation-duration:8s]" />
           <div className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-3xl animate-pulse [animation-duration:10s]" />
+          <div className="grain-overlay" />
         </div>
 
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 w-full">
@@ -407,7 +408,7 @@ function JBCLanding() {
           >
             Juventude
             <br />
-            <span className="text-primary">Batista</span> Carioca
+            <span className="text-gradient-brand">Batista</span> Carioca
           </h1>
 
           <p
