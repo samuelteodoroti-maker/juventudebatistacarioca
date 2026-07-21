@@ -472,7 +472,7 @@ function JBCLanding() {
       </section>
 
       {/* MARQUEE */}
-      <div className="border-y border-border overflow-hidden py-5 sm:py-6 bg-muted/30">
+      <div className="marquee-wrap border-y border-border overflow-hidden py-5 sm:py-6 bg-muted/30" aria-hidden="true">
         <div className="marquee flex whitespace-nowrap gap-10 sm:gap-16 font-display text-2xl sm:text-4xl md:text-5xl font-bold">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex gap-10 sm:gap-16 items-center pr-10 sm:pr-16">
@@ -691,7 +691,7 @@ function JBCLanding() {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
 
-              {filteredEvents.map((e, i) => (
+              {filteredEvents.map((e) => (
                 <a
                   key={e.title}
                   href={e.href}
@@ -711,10 +711,10 @@ function JBCLanding() {
                         e.closed ? "grayscale-[45%] group-hover:grayscale-0" : ""
                       }`}
                     />
-                    {/* subtle bottom-only gradient — keeps posters visible */}
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card/95 to-transparent" />
-                    {/* top scrim for badge legibility */}
-                    <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background/50 to-transparent" />
+                    {/* subtle bottom fade into card body */}
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card via-card/70 to-transparent" />
+                    {/* neutral top scrim for badge legibility on any theme */}
+                    <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/40 to-transparent" />
                     <div className="absolute top-4 left-4 right-4 flex items-start justify-between gap-2">
                       <span
                         className={`inline-flex items-center gap-1.5 rounded-full backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-semibold border shadow-sm ${
@@ -727,9 +727,6 @@ function JBCLanding() {
                           <span className="h-1.5 w-1.5 rounded-full bg-accent-foreground animate-pulse" />
                         )}
                         {e.badgeLabel ?? (e.closed ? "Encerrado" : "Inscrições abertas")}
-                      </span>
-                      <span className="font-display text-xl font-black text-foreground bg-background/60 backdrop-blur-md rounded-full h-9 w-9 grid place-items-center border border-border">
-                        {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
@@ -828,8 +825,8 @@ function JBCLanding() {
       {/* FOOTER */}
       <footer className="border-t border-border bg-muted/30">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 py-14 sm:py-16">
-          <div className="grid md:grid-cols-4 gap-10 md:gap-12">
-            <div className="md:col-span-2">
+          <div className="grid md:grid-cols-12 gap-10 md:gap-12">
+            <div className="md:col-span-5">
               <div className="flex items-center gap-3">
                 <img src={jbcLogo.url} alt="" className="h-11 w-11 rounded-lg object-cover" />
                 <div className="font-display text-3xl sm:text-4xl font-black">
@@ -840,9 +837,17 @@ function JBCLanding() {
                 Juventude Batista Carioca — +100 anos conectando jovens, fé e comunidade
                 no Rio de Janeiro.
               </p>
+              <a
+                href={ebookAsset.url}
+                download="E-BOOK_JBC_100_anos.pdf"
+                className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 text-accent px-4 py-2 text-xs font-semibold hover:bg-accent hover:text-accent-foreground transition focus-ring"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Baixar e-book dos 100 anos
+              </a>
             </div>
 
-            <div>
+            <div className="md:col-span-3">
               <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4 font-semibold">
                 Navegação
               </div>
@@ -865,7 +870,7 @@ function JBCLanding() {
               </ul>
             </div>
 
-            <div>
+            <div className="md:col-span-4">
               <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4 font-semibold">
                 Social
               </div>
@@ -876,10 +881,13 @@ function JBCLanding() {
                       href={s.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 text-foreground/80 hover:text-accent transition"
+                      className="inline-flex items-center gap-2 text-foreground/80 hover:text-accent transition group"
                     >
                       <s.Icon className="h-4 w-4" />
-                      {s.name}
+                      <span>{s.name}</span>
+                      <span className="text-muted-foreground group-hover:text-accent transition">
+                        · {s.handle}
+                      </span>
                     </a>
                   </li>
                 ))}
