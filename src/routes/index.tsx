@@ -240,7 +240,7 @@ function JBCLanding() {
             data-reveal
             className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 backdrop-blur px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-accent font-semibold"
           >
-            <Sparkles className="h-3.5 w-3.5" /> 1925 — 2025 · 100 anos
+            <Sparkles className="h-3.5 w-3.5" /> 1925 — 2026 · 101 anos
           </div>
 
           <h1
@@ -257,7 +257,7 @@ function JBCLanding() {
             className="mt-6 sm:mt-8 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             Um movimento de jovens que acredita em conexão real, propósito e comunidade.
-            Cem anos de história — e o melhor ainda está por vir.
+            Mais de 100 anos de história — e o melhor ainda está por vir.
           </p>
 
           <div data-reveal className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
@@ -283,7 +283,7 @@ function JBCLanding() {
             className="mt-14 sm:mt-20 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl"
           >
             {[
-              { k: "100", v: "anos de história" },
+              { k: "101", v: "anos de história" },
               { k: "3", v: "ações ativas" },
               { k: "∞", v: "conexões reais" },
             ].map((s) => (
@@ -311,7 +311,7 @@ function JBCLanding() {
               <span>CONEXÃO</span><span className="text-accent">◆</span>
               <span>PROPÓSITO</span><span className="text-accent">◆</span>
               <span>COMUNIDADE</span><span className="text-accent">◆</span>
-              <span>100 ANOS</span><span className="text-accent">◆</span>
+              <span>+100 ANOS</span><span className="text-accent">◆</span>
               <span>JBC</span><span className="text-accent">◆</span>
             </div>
           ))}
@@ -326,7 +326,7 @@ function JBCLanding() {
               — Nossa História
             </div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1]">
-              100 anos
+              +100 anos
               <br />
               de uma mesma
               <br />
@@ -537,7 +537,7 @@ function JBCLanding() {
                 </div>
               </div>
               <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
-                Juventude Batista Carioca — 100 anos conectando jovens, fé e comunidade
+                Juventude Batista Carioca — +100 anos conectando jovens, fé e comunidade
                 no Rio de Janeiro.
               </p>
             </div>
