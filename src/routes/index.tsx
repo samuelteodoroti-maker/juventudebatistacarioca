@@ -195,6 +195,9 @@ function JBCLanding() {
       const y = window.scrollY;
       setScrolled(y > 20);
       setShowTopBtn(y > 600);
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = h > 0 ? Math.min(100, (y / h) * 100) : 0;
+      document.documentElement.style.setProperty("--progress", `${pct}%`);
       raf = 0;
     };
     const onScroll = () => {
@@ -262,6 +265,7 @@ function JBCLanding() {
 
   return (
     <div className="min-h-screen bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground">
+      <div className="scroll-progress" aria-hidden="true" />
       <a
         href="#top"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-accent-foreground focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
@@ -387,6 +391,7 @@ function JBCLanding() {
           />
           <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl animate-pulse [animation-duration:8s]" />
           <div className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-3xl animate-pulse [animation-duration:10s]" />
+          <div className="grain-overlay" />
         </div>
 
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 w-full">
@@ -403,7 +408,7 @@ function JBCLanding() {
           >
             Juventude
             <br />
-            <span className="text-primary">Batista</span> Carioca
+            <span className="text-gradient-brand">Batista</span> Carioca
           </h1>
 
           <p
@@ -486,9 +491,7 @@ function JBCLanding() {
       <section id="historia" className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-7xl grid lg:grid-cols-12 gap-10 lg:gap-12">
           <div className="lg:col-span-5" data-reveal>
-            <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
-              — Nossa História
-            </div>
+            <div className="eyebrow mb-4">Nossa História</div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1]">
               103 anos
               <br />
@@ -551,9 +554,7 @@ function JBCLanding() {
             data-reveal
           >
             <div>
-              <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
-                — Eventos & Ações
-              </div>
+              <div className="eyebrow mb-4">Eventos & Ações</div>
               <h2 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[0.95]">
                 Inscreva-se
                 <br />
@@ -780,9 +781,7 @@ function JBCLanding() {
       <section id="conecte" className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12 sm:mb-16" data-reveal>
-            <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
-              — Conecte-se
-            </div>
+            <div className="eyebrow justify-center mb-4">Conecte-se</div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[0.95]">
               Onde a gente
               <br />
