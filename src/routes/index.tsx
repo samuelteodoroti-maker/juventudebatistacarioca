@@ -311,7 +311,7 @@ function JBCLanding() {
               <span>CONEXÃO</span><span className="text-accent">◆</span>
               <span>PROPÓSITO</span><span className="text-accent">◆</span>
               <span>COMUNIDADE</span><span className="text-accent">◆</span>
-              <span>100 ANOS</span><span className="text-accent">◆</span>
+              <span>+100 ANOS</span><span className="text-accent">◆</span>
               <span>JBC</span><span className="text-accent">◆</span>
             </div>
           ))}
