@@ -463,7 +463,8 @@ function JBCLanding() {
               <label className="relative flex-1 group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
                 <input
-                  type="search"
+                  type="text"
+                  inputMode="search"
                   value={query}
                   onChange={(ev) => setQuery(ev.target.value)}
                   placeholder="Buscar por nome, data, local…"
