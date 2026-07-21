@@ -190,15 +190,25 @@ function JBCLanding() {
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
+    let raf = 0;
+    const update = () => {
       const y = window.scrollY;
       setScrolled(y > 20);
       setShowTopBtn(y > 600);
+      raf = 0;
     };
-    onScroll();
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
+
 
   useEffect(() => {
     const ids = ["top", ...NAV.map((n) => n.id)];
@@ -251,28 +261,14 @@ function JBCLanding() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-body antialiased selection:bg-accent selection:text-accent-foreground">
-      <style>{`
-        :root { --font-display: 'Montserrat', system-ui, sans-serif; --font-body: 'Inter', system-ui, sans-serif; }
-        .font-display { font-family: var(--font-display); letter-spacing: -0.02em; font-weight: 800; }
-        .font-body { font-family: var(--font-body); }
-        [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
-        [data-reveal].is-visible { opacity: 1; transform: none; }
-        .marquee { animation: marquee 25s linear infinite; }
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .focus-ring:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 9999px; }
-        @media (prefers-reduced-motion: reduce) {
-          [data-reveal] { opacity: 1; transform: none; transition: none; }
-          .marquee { animation: none; }
-        }
-      `}</style>
-
+    <div className="min-h-screen bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground">
       <a
         href="#top"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-accent-foreground focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
       >
         Pular para o conteúdo
       </a>
+
 
       {/* NAV */}
       <header
@@ -288,7 +284,7 @@ function JBCLanding() {
             className="flex items-center gap-2.5 focus-ring"
             aria-label="Ir para o topo"
           >
-            <img src={jbcLogo.url} alt="" className="h-9 w-9 rounded-lg object-cover" />
+            <img src={jbcLogo.url} alt="" width={36} height={36} decoding="async" fetchPriority="high" className="h-9 w-9 rounded-lg object-cover" />
             <span className="font-display text-lg font-black tracking-tight">
               JBC<span className="text-accent">.</span>
             </span>
@@ -487,7 +483,7 @@ function JBCLanding() {
       </div>
 
       {/* HISTÓRIA */}
-      <section id="historia" className="py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
+      <section id="historia" className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-7xl grid lg:grid-cols-12 gap-10 lg:gap-12">
           <div className="lg:col-span-5" data-reveal>
             <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
@@ -547,7 +543,7 @@ function JBCLanding() {
       {/* EVENTOS */}
       <section
         id="eventos"
-        className="py-24 sm:py-32 px-5 sm:px-6 lg:px-10 bg-muted/30 border-y border-border"
+        className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10 bg-muted/30 border-y border-border"
       >
         <div className="mx-auto max-w-7xl">
           <div
@@ -691,7 +687,7 @@ function JBCLanding() {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
 
-              {filteredEvents.map((e) => (
+              {filteredEvents.map((e, i) => (
                 <a
                   key={e.title}
                   href={e.href}
@@ -706,11 +702,14 @@ function JBCLanding() {
                     <img
                       src={e.image}
                       alt=""
-                      loading="lazy"
+                      loading={i < 2 ? "eager" : "lazy"}
+                      decoding="async"
+                      fetchPriority={i === 0 ? "high" : "auto"}
                       className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-105 ${
                         e.closed ? "grayscale-[45%] group-hover:grayscale-0" : ""
                       }`}
                     />
+
                     {/* subtle bottom fade into card body */}
                     <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card via-card/70 to-transparent" />
                     {/* neutral top scrim for badge legibility on any theme */}
@@ -778,7 +777,7 @@ function JBCLanding() {
       </section>
 
       {/* CONECTE-SE */}
-      <section id="conecte" className="py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
+      <section id="conecte" className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12 sm:mb-16" data-reveal>
             <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
@@ -823,12 +822,12 @@ function JBCLanding() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border bg-muted/30">
+      <footer className="cv-auto border-t border-border bg-muted/30">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 py-14 sm:py-16">
           <div className="grid md:grid-cols-12 gap-10 md:gap-12">
             <div className="md:col-span-5">
               <div className="flex items-center gap-3">
-                <img src={jbcLogo.url} alt="" className="h-11 w-11 rounded-lg object-cover" />
+                <img src={jbcLogo.url} alt="" width={44} height={44} loading="lazy" decoding="async" className="h-11 w-11 rounded-lg object-cover" />
                 <div className="font-display text-3xl sm:text-4xl font-black">
                   JBC<span className="text-accent">.</span>
                 </div>
