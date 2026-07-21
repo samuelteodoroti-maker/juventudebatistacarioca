@@ -711,10 +711,10 @@ function JBCLanding() {
                         e.closed ? "grayscale-[45%] group-hover:grayscale-0" : ""
                       }`}
                     />
-                    {/* subtle bottom-only gradient — keeps posters visible */}
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card/95 to-transparent" />
-                    {/* top scrim for badge legibility */}
-                    <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background/50 to-transparent" />
+                    {/* subtle bottom fade into card body */}
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card via-card/70 to-transparent" />
+                    {/* neutral top scrim for badge legibility on any theme */}
+                    <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/40 to-transparent" />
                     <div className="absolute top-4 left-4 right-4 flex items-start justify-between gap-2">
                       <span
                         className={`inline-flex items-center gap-1.5 rounded-full backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-semibold border shadow-sm ${
@@ -727,9 +727,6 @@ function JBCLanding() {
                           <span className="h-1.5 w-1.5 rounded-full bg-accent-foreground animate-pulse" />
                         )}
                         {e.badgeLabel ?? (e.closed ? "Encerrado" : "Inscrições abertas")}
-                      </span>
-                      <span className="font-display text-xl font-black text-foreground bg-background/60 backdrop-blur-md rounded-full h-9 w-9 grid place-items-center border border-border">
-                        {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
