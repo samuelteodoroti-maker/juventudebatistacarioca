@@ -240,7 +240,7 @@ function JBCLanding() {
             data-reveal
             className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 backdrop-blur px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-accent font-semibold"
           >
-            <Sparkles className="h-3.5 w-3.5" /> 1925 — 2025 · 100 anos
+            <Sparkles className="h-3.5 w-3.5" /> 1925 — 2026 · 101 anos
           </div>
 
           <h1
