@@ -258,7 +258,7 @@ function JBCLanding() {
         .font-body { font-family: var(--font-body); }
         [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
         [data-reveal].is-visible { opacity: 1; transform: none; }
-        .marquee { animation: marquee 40s linear infinite; }
+        .marquee { animation: marquee 25s linear infinite; }
         @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .focus-ring:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 9999px; }
         @media (prefers-reduced-motion: reduce) {
