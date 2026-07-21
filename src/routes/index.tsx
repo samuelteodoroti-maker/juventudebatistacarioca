@@ -398,7 +398,7 @@ function JBCLanding() {
             data-reveal
             className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 backdrop-blur px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-accent font-semibold"
           >
-            <Sparkles className="h-3.5 w-3.5" /> 1925 — 2026 · 101 anos
+            <Sparkles className="h-3.5 w-3.5" /> 1923 — 2026 · 103 anos
           </div>
 
           <h1
@@ -415,7 +415,7 @@ function JBCLanding() {
             className="mt-6 sm:mt-8 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             Um movimento de jovens que acredita em conexão real, propósito e comunidade.
-            Mais de 100 anos de história — e o melhor ainda está por vir.
+            103 anos de história — e o melhor ainda está por vir.
           </p>
 
           <div data-reveal className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
@@ -479,7 +479,7 @@ function JBCLanding() {
               <span>CONEXÃO</span><span className="text-accent">◆</span>
               <span>PROPÓSITO</span><span className="text-accent">◆</span>
               <span>COMUNIDADE</span><span className="text-accent">◆</span>
-              <span>+100 ANOS</span><span className="text-accent">◆</span>
+              <span>103 ANOS</span><span className="text-accent">◆</span>
               <span>JBC</span><span className="text-accent">◆</span>
             </div>
           ))}
@@ -494,7 +494,7 @@ function JBCLanding() {
               — Nossa História
             </div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1]">
-              +100 anos
+              103 anos
               <br />
               de uma mesma
               <br />
@@ -504,7 +504,7 @@ function JBCLanding() {
 
           <div className="lg:col-span-7 space-y-6" data-reveal>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Desde 1925, a Juventude Batista Carioca é ponto de encontro de gerações que
+              Desde 1923, a Juventude Batista Carioca é ponto de encontro de gerações que
               acreditam no poder da fé vivida em comunidade. São décadas de amizades,
               acampamentos, congressos e histórias que atravessam o tempo.
             </p>
@@ -834,7 +834,7 @@ function JBCLanding() {
                 </div>
               </div>
               <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
-                Juventude Batista Carioca — +100 anos conectando jovens, fé e comunidade
+                Juventude Batista Carioca — 103 anos conectando jovens, fé e comunidade
                 no Rio de Janeiro.
               </p>
               <a
