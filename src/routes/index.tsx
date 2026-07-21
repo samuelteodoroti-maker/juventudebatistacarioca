@@ -18,7 +18,11 @@ import {
   Search,
   SlidersHorizontal,
   Heart,
+  Sun,
+  Moon,
+  Monitor,
 } from "lucide-react";
+import { useTheme, type Theme } from "@/lib/theme";
 import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
 import temposDePazImg from "@/assets/tempos-de-paz.png.asset.json";
@@ -133,6 +137,49 @@ function useReveal() {
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
+}
+
+const THEME_OPTIONS: { id: Theme; label: string; Icon: typeof Sun }[] = [
+  { id: "light", label: "Claro", Icon: Sun },
+  { id: "dark", label: "Escuro", Icon: Moon },
+  { id: "system", label: "Sistema", Icon: Monitor },
+];
+
+function ThemeToggle({ variant = "compact" }: { variant?: "compact" | "full" }) {
+  const { theme, setTheme } = useTheme();
+  return (
+    <div
+      role="radiogroup"
+      aria-label="Tema"
+      className={`inline-flex items-center gap-0.5 rounded-full border border-border bg-card/40 backdrop-blur p-0.5 ${
+        variant === "full" ? "w-full justify-between" : ""
+      }`}
+    >
+      {THEME_OPTIONS.map(({ id, label, Icon }) => {
+        const active = theme === id;
+        return (
+          <button
+            key={id}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            title={label}
+            onClick={() => setTheme(id)}
+            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-semibold transition focus-ring ${
+              active
+                ? "bg-accent text-accent-foreground"
+                : "text-foreground/70 hover:text-foreground"
+            } ${variant === "full" ? "flex-1 justify-center py-2 text-sm" : ""}`}
+          >
+            <Icon className="h-3.5 w-3.5" />
+            <span className={variant === "compact" ? "sr-only sm:not-sr-only" : ""}>
+              {label}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
 }
 
 function JBCLanding() {
@@ -273,6 +320,9 @@ function JBCLanding() {
           </div>
 
           <div className="flex items-center gap-2">
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
             <button
               onClick={() => scrollTo("eventos")}
               className="hidden sm:inline-flex group items-center gap-2 rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition focus-ring"
@@ -315,6 +365,12 @@ function JBCLanding() {
               Participar
               <ArrowRight className="h-4 w-4" />
             </button>
+            <div className="mt-4 pt-4 border-t border-border">
+              <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2 font-semibold px-1">
+                Tema
+              </div>
+              <ThemeToggle variant="full" />
+            </div>
           </div>
         </div>
       </header>
