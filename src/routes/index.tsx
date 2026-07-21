@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   ArrowRight,
-  PlayCircle,
+  PlayCircle: _PlayCircle,
   Instagram,
   Facebook,
   Youtube,
