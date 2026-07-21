@@ -157,6 +157,26 @@ function JBCLanding() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"all" | EventStatus>("all");
+
+  const filteredEvents = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return EVENTS.filter((e) => {
+      if (statusFilter !== "all" && getEventStatus(e) !== statusFilter) return false;
+      if (!q) return true;
+      return [e.title, e.subtitle, e.tag, e.date, e.location]
+        .filter(Boolean)
+        .some((v) => (v as string).toLowerCase().includes(q));
+    });
+  }, [query, statusFilter]);
+
+  const statusCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: EVENTS.length, open: 0, upcoming: 0, closed: 0 };
+    EVENTS.forEach((e) => (counts[getEventStatus(e)] += 1));
+    return counts;
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground font-body antialiased selection:bg-accent selection:text-accent-foreground">
       <style>{`
