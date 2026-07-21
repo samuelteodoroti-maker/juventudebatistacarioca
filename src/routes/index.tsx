@@ -265,6 +265,7 @@ function JBCLanding() {
 
   return (
     <div className="min-h-screen bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground">
+      <div className="scroll-progress" aria-hidden="true" />
       <a
         href="#top"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-accent focus:text-accent-foreground focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
