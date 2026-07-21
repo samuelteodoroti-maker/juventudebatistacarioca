@@ -19,9 +19,10 @@ export const Route = createFileRoute("/")({
 
 const EVENTS = [
   {
-    title: "Inscrição · Ação 1",
-    subtitle: "Participe do próximo encontro",
-    tag: "Evento",
+    title: "Audição JBC Music",
+    subtitle:
+      "Inscrições abertas para novos voluntários. Não é sobre palco — é sobre altar, adoração e um coração disponível para servir. Se você tem entre 18 e 40 anos e é membro de uma igreja batista filiada à Convenção Batista Carioca, esse lugar pode ser seu.",
+    tag: "Audição",
     href: "https://docs.google.com/forms/d/e/1FAIpQLSd0FsnKmxqXmTAxPIzqe5q4IDE4xN-6kiN6hjA0fdijsZzzWw/viewform",
   },
   {
