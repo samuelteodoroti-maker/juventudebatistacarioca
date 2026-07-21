@@ -27,20 +27,31 @@ const EVENTS = [
     title: "Audição JBC Music",
     subtitle:
       "Inscrições abertas para novos voluntários. Não é sobre palco — é sobre altar, adoração e um coração disponível para servir. Se você tem entre 18 e 40 anos e é membro de uma igreja batista filiada à Convenção Batista Carioca, esse lugar pode ser seu.",
-    tag: "Audição",
+    tag: "Audição · Inscrições abertas",
     href: "https://docs.google.com/forms/d/e/1FAIpQLSd0FsnKmxqXmTAxPIzqe5q4IDE4xN-6kiN6hjA0fdijsZzzWw/viewform",
+    closed: false,
+    image: null as string | null,
+    meta: null as string | null,
   },
   {
-    title: "Inscrição · Ação 2",
-    subtitle: "Garanta sua vaga agora",
-    tag: "Formulário",
+    title: "Copa JBC · Campeonato de Futsal",
+    subtitle:
+      "Times escalados, confrontos definidos e muita energia dentro de quadra. Um dia para reunir a juventude no esporte e na comunhão.",
+    tag: "Copa · Encerrado",
     href: "https://docs.google.com/forms/u/0/d/1L6pgBzo8JKFzZv9ERuxb54gv0PxFQX-BS0YJTqYOi5g/viewform?edit_requested=true",
+    closed: true,
+    image: copaJbcImg.url,
+    meta: "16 de maio · Primeira Igreja Batista do Rio de Janeiro — Rua Frei Caneca, 525, Estácio · RJ",
   },
   {
-    title: "Inscrição · Ação 3",
-    subtitle: "Conecte-se com a JBC",
-    tag: "Ação",
+    title: "Tempos de Paz",
+    subtitle:
+      "Roteiro da missão: três dias para servir, orar e viver a paz de Cristo em comunidade.",
+    tag: "Missão · Encerrado",
     href: "https://docs.google.com/forms/d/1op80PJbCa0BCgSCSo96HFEhQyRlkehjMQ7OhDMihxFs/closedform",
+    closed: true,
+    image: temposDePazImg.url,
+    meta: "19, 20 e 21 de junho",
   },
 ];
 
