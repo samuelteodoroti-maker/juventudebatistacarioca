@@ -491,9 +491,7 @@ function JBCLanding() {
       <section id="historia" className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-7xl grid lg:grid-cols-12 gap-10 lg:gap-12">
           <div className="lg:col-span-5" data-reveal>
-            <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
-              — Nossa História
-            </div>
+            <div className="eyebrow mb-4">Nossa História</div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1]">
               103 anos
               <br />
