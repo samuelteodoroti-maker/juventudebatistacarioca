@@ -131,17 +131,17 @@ function JBCLanding() {
         </div>
 
         <div className="mx-auto max-w-7xl px-6 lg:px-10 w-full">
-          <div data-reveal className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 backdrop-blur px-3 py-1 text-xs uppercase tracking-widest text-muted-foreground">
+          <div data-reveal className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 backdrop-blur px-3 py-1 text-xs uppercase tracking-widest text-accent font-semibold">
             <Sparkles className="h-3.5 w-3.5" /> 1925 — 2025 · 100 anos
           </div>
 
           <h1
             data-reveal
-            className="font-display mt-6 text-[15vw] leading-[0.9] font-bold sm:text-[10vw] lg:text-[9rem]"
+            className="font-display mt-6 text-[15vw] leading-[0.9] font-black sm:text-[10vw] lg:text-[9rem]"
           >
             Juventude
             <br />
-            <span className="text-muted-foreground">Batista</span> Carioca
+            <span className="text-primary">Batista</span> Carioca
           </h1>
 
           <p data-reveal className="mt-8 max-w-xl text-lg text-muted-foreground">
@@ -152,7 +152,7 @@ function JBCLanding() {
           <div data-reveal className="mt-10 flex flex-wrap items-center gap-4">
             <button
               onClick={() => scrollTo("eventos")}
-              className="group inline-flex items-center gap-3 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium hover:scale-[1.02] active:scale-[0.98] transition"
+              className="group inline-flex items-center gap-3 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition shadow-lg shadow-accent/20"
             >
               Nossos Eventos
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
