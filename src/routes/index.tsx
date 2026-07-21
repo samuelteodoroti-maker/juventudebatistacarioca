@@ -321,11 +321,21 @@ function JBCLanding() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative min-h-[100svh] flex items-center pt-28 pb-20 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+      <section id="top" className="relative min-h-[100svh] flex items-center pt-28 pb-24 overflow-hidden">
+        <div className="absolute inset-0 -z-10" aria-hidden="true">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
-          <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl" />
-          <div className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-[0.25]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, oklch(1 0 0 / 0.08) 1px, transparent 0)",
+              backgroundSize: "28px 28px",
+              maskImage: "radial-gradient(ellipse at 50% 30%, black 40%, transparent 75%)",
+              WebkitMaskImage: "radial-gradient(ellipse at 50% 30%, black 40%, transparent 75%)",
+            }}
+          />
+          <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl animate-pulse [animation-duration:8s]" />
+          <div className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-3xl animate-pulse [animation-duration:10s]" />
         </div>
 
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 w-full">
@@ -356,14 +366,14 @@ function JBCLanding() {
           <div data-reveal className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
             <button
               onClick={() => scrollTo("eventos")}
-              className="group inline-flex items-center gap-3 rounded-full bg-accent text-accent-foreground px-6 py-3.5 text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition shadow-lg shadow-accent/25 focus-ring"
+              className="group inline-flex items-center gap-3 rounded-full bg-accent text-accent-foreground px-6 py-3.5 text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition shadow-lg shadow-accent/25 focus-ring min-h-11"
             >
               Nossos Eventos
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
             </button>
             <button
               onClick={() => scrollTo("historia")}
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3.5 text-sm text-foreground/90 hover:bg-muted/40 transition focus-ring"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/30 backdrop-blur px-5 py-3.5 text-sm text-foreground/90 hover:bg-muted/50 hover:border-foreground/30 transition focus-ring min-h-11"
             >
               Conheça a JBC
               <ChevronDown className="h-4 w-4" />
@@ -382,9 +392,9 @@ function JBCLanding() {
             ].map((s) => (
               <div
                 key={s.v}
-                className="rounded-2xl border border-border bg-card/40 backdrop-blur px-4 py-4 sm:px-5 sm:py-5"
+                className="group rounded-2xl border border-border bg-card/40 backdrop-blur px-4 py-4 sm:px-5 sm:py-5 hover:border-accent/50 hover:bg-card/60 hover:-translate-y-0.5 transition-all duration-300"
               >
-                <div className="font-display text-3xl sm:text-4xl font-black text-primary leading-none">
+                <div className="font-display text-3xl sm:text-4xl font-black text-primary leading-none group-hover:text-accent transition-colors">
                   {s.k}
                 </div>
                 <div className="mt-2 text-[11px] sm:text-xs uppercase tracking-widest text-muted-foreground">
@@ -394,6 +404,16 @@ function JBCLanding() {
             ))}
           </div>
         </div>
+
+        {/* scroll hint */}
+        <button
+          onClick={() => scrollTo("historia")}
+          aria-label="Rolar para próxima seção"
+          className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground hover:text-accent transition focus-ring"
+        >
+          <span className="text-[10px] uppercase tracking-[0.25em]">Role</span>
+          <ChevronDown className="h-4 w-4 animate-bounce" />
+        </button>
       </section>
 
       {/* MARQUEE */}
