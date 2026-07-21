@@ -398,7 +398,7 @@ function JBCLanding() {
             data-reveal
             className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 backdrop-blur px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-accent font-semibold"
           >
-            <Sparkles className="h-3.5 w-3.5" /> 1925 — 2026 · 101 anos
+            <Sparkles className="h-3.5 w-3.5" /> 1923 — 2026 · 103 anos
           </div>
 
           <h1
@@ -504,7 +504,7 @@ function JBCLanding() {
 
           <div className="lg:col-span-7 space-y-6" data-reveal>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Desde 1925, a Juventude Batista Carioca é ponto de encontro de gerações que
+              Desde 1923, a Juventude Batista Carioca é ponto de encontro de gerações que
               acreditam no poder da fé vivida em comunidade. São décadas de amizades,
               acampamentos, congressos e histórias que atravessam o tempo.
             </p>
