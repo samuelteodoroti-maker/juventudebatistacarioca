@@ -283,7 +283,7 @@ function JBCLanding() {
             className="mt-14 sm:mt-20 grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl"
           >
             {[
-              { k: "100", v: "anos de história" },
+              { k: "101", v: "anos de história" },
               { k: "3", v: "ações ativas" },
               { k: "∞", v: "conexões reais" },
             ].map((s) => (
