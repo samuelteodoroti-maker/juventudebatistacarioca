@@ -554,9 +554,7 @@ function JBCLanding() {
             data-reveal
           >
             <div>
-              <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
-                — Eventos & Ações
-              </div>
+              <div className="eyebrow mb-4">Eventos & Ações</div>
               <h2 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[0.95]">
                 Inscreva-se
                 <br />
