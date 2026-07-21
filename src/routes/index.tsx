@@ -781,9 +781,7 @@ function JBCLanding() {
       <section id="conecte" className="cv-auto py-24 sm:py-32 px-5 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12 sm:mb-16" data-reveal>
-            <div className="text-[11px] uppercase tracking-[0.2em] text-accent font-semibold mb-4">
-              — Conecte-se
-            </div>
+            <div className="eyebrow justify-center mb-4">Conecte-se</div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[0.95]">
               Onde a gente
               <br />
