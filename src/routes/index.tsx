@@ -350,7 +350,10 @@ function JBCLanding() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
           <div className="grid md:grid-cols-4 gap-12">
             <div className="md:col-span-2">
-              <div className="font-display text-4xl font-bold">JBC.</div>
+              <div className="flex items-center gap-3">
+                <img src={jbcLogo.url} alt="JBC" className="h-12 w-12 rounded-lg object-cover" />
+                <div className="font-display text-4xl font-black">JBC<span className="text-accent">.</span></div>
+              </div>
               <p className="mt-4 text-sm text-muted-foreground max-w-sm">
                 Juventude Batista Carioca — 100 anos conectando jovens, fé e comunidade.
               </p>
