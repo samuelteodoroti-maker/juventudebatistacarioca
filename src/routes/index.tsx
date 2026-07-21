@@ -182,6 +182,8 @@ function ThemeToggle({ variant = "compact" }: { variant?: "compact" | "full" }) 
   );
 }
 
+function JBCLanding() {
+  useReveal();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("top");
