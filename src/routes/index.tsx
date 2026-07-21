@@ -10,7 +10,6 @@ import {
   Calendar,
   MapPin,
   Sparkles,
-  Users,
   ChevronDown,
   Download,
   BookOpen,
