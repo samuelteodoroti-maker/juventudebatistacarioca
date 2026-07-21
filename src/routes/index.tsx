@@ -463,7 +463,8 @@ function JBCLanding() {
               <label className="relative flex-1 group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
                 <input
-                  type="search"
+                  type="text"
+                  inputMode="search"
                   value={query}
                   onChange={(ev) => setQuery(ev.target.value)}
                   placeholder="Buscar por nome, data, local…"
@@ -552,7 +553,9 @@ function JBCLanding() {
                   rel="noreferrer"
                   data-reveal
                   className="group relative overflow-hidden rounded-3xl border border-border bg-card flex flex-col hover:border-accent/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1.5 focus-ring"
-                  aria-label={`${e.title}${e.closed ? " — inscrições encerradas" : " — inscrever-se"}`}
+                  aria-label={`${e.title} — ${
+                    e.badgeLabel ?? (e.closed ? "inscrições encerradas" : "inscrever-se")
+                  }`}
                 >
                   <div className="relative overflow-hidden aspect-[16/10] bg-muted">
                     <img
