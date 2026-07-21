@@ -17,6 +17,7 @@ import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
 import temposDePazImg from "@/assets/tempos-de-paz.png.asset.json";
 import copaJbcImg from "@/assets/copa-jbc.png.asset.json";
+import jbcMusicImg from "@/assets/jbc-music.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: JBCLanding,
@@ -30,7 +31,7 @@ const EVENTS = [
     tag: "Audição · Inscrições abertas",
     href: "https://docs.google.com/forms/d/e/1FAIpQLSd0FsnKmxqXmTAxPIzqe5q4IDE4xN-6kiN6hjA0fdijsZzzWw/viewform",
     closed: false,
-    image: null as string | null,
+    image: jbcMusicImg.url,
     meta: null as string | null,
   },
   {
