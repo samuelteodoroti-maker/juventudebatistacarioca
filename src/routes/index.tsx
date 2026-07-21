@@ -195,6 +195,9 @@ function JBCLanding() {
       const y = window.scrollY;
       setScrolled(y > 20);
       setShowTopBtn(y > 600);
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = h > 0 ? Math.min(100, (y / h) * 100) : 0;
+      document.documentElement.style.setProperty("--progress", `${pct}%`);
       raf = 0;
     };
     const onScroll = () => {
