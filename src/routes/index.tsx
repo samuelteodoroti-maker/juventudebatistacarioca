@@ -3,13 +3,13 @@ import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
+  ArrowUp,
   Instagram,
   Facebook,
   Youtube,
   Calendar,
   MapPin,
   Sparkles,
-  Users,
   ChevronDown,
   Download,
   BookOpen,
@@ -17,6 +17,7 @@ import {
   X,
   Search,
   SlidersHorizontal,
+  Heart,
 } from "lucide-react";
 import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
@@ -138,11 +139,36 @@ function JBCLanding() {
   useReveal();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("top");
+  const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      setShowTopBtn(y > 600);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = ["top", ...NAV.map((n) => n.id)];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+    if (!sections.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
   }, []);
 
   useEffect(() => {
@@ -221,16 +247,29 @@ function JBCLanding() {
             </span>
           </button>
 
-          <div className="hidden md:flex items-center gap-8 text-sm">
-            {NAV.map((n) => (
-              <button
-                key={n.id}
-                onClick={() => scrollTo(n.id)}
-                className="text-foreground/80 hover:text-foreground transition focus-ring"
-              >
-                {n.label}
-              </button>
-            ))}
+          <div className="hidden md:flex items-center gap-1 text-sm">
+            {NAV.map((n) => {
+              const active = activeSection === n.id;
+              return (
+                <button
+                  key={n.id}
+                  onClick={() => scrollTo(n.id)}
+                  aria-current={active ? "true" : undefined}
+                  className={`relative px-3 py-2 rounded-full transition focus-ring ${
+                    active
+                      ? "text-foreground"
+                      : "text-foreground/70 hover:text-foreground"
+                  }`}
+                >
+                  {n.label}
+                  <span
+                    className={`pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-1 h-[3px] w-1 rounded-full bg-accent transition-all duration-300 ${
+                      active ? "opacity-100 w-6" : "opacity-0 w-1"
+                    }`}
+                  />
+                </button>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-2">
@@ -281,11 +320,21 @@ function JBCLanding() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative min-h-[100svh] flex items-center pt-28 pb-20 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+      <section id="top" className="relative min-h-[100svh] flex items-center pt-28 pb-24 overflow-hidden">
+        <div className="absolute inset-0 -z-10" aria-hidden="true">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
-          <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl" />
-          <div className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-[0.25]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, oklch(1 0 0 / 0.08) 1px, transparent 0)",
+              backgroundSize: "28px 28px",
+              maskImage: "radial-gradient(ellipse at 50% 30%, black 40%, transparent 75%)",
+              WebkitMaskImage: "radial-gradient(ellipse at 50% 30%, black 40%, transparent 75%)",
+            }}
+          />
+          <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl animate-pulse [animation-duration:8s]" />
+          <div className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/15 blur-3xl animate-pulse [animation-duration:10s]" />
         </div>
 
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 w-full">
@@ -316,14 +365,14 @@ function JBCLanding() {
           <div data-reveal className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
             <button
               onClick={() => scrollTo("eventos")}
-              className="group inline-flex items-center gap-3 rounded-full bg-accent text-accent-foreground px-6 py-3.5 text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition shadow-lg shadow-accent/25 focus-ring"
+              className="group inline-flex items-center gap-3 rounded-full bg-accent text-accent-foreground px-6 py-3.5 text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition shadow-lg shadow-accent/25 focus-ring min-h-11"
             >
               Nossos Eventos
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
             </button>
             <button
               onClick={() => scrollTo("historia")}
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3.5 text-sm text-foreground/90 hover:bg-muted/40 transition focus-ring"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/30 backdrop-blur px-5 py-3.5 text-sm text-foreground/90 hover:bg-muted/50 hover:border-foreground/30 transition focus-ring min-h-11"
             >
               Conheça a JBC
               <ChevronDown className="h-4 w-4" />
@@ -342,9 +391,9 @@ function JBCLanding() {
             ].map((s) => (
               <div
                 key={s.v}
-                className="rounded-2xl border border-border bg-card/40 backdrop-blur px-4 py-4 sm:px-5 sm:py-5"
+                className="group rounded-2xl border border-border bg-card/40 backdrop-blur px-4 py-4 sm:px-5 sm:py-5 hover:border-accent/50 hover:bg-card/60 hover:-translate-y-0.5 transition-all duration-300"
               >
-                <div className="font-display text-3xl sm:text-4xl font-black text-primary leading-none">
+                <div className="font-display text-3xl sm:text-4xl font-black text-primary leading-none group-hover:text-accent transition-colors">
                   {s.k}
                 </div>
                 <div className="mt-2 text-[11px] sm:text-xs uppercase tracking-widest text-muted-foreground">
@@ -354,6 +403,16 @@ function JBCLanding() {
             ))}
           </div>
         </div>
+
+        {/* scroll hint */}
+        <button
+          onClick={() => scrollTo("historia")}
+          aria-label="Rolar para próxima seção"
+          className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground hover:text-accent transition focus-ring"
+        >
+          <span className="text-[10px] uppercase tracking-[0.25em]">Role</span>
+          <ChevronDown className="h-4 w-4 animate-bounce" />
+        </button>
       </section>
 
       {/* MARQUEE */}
@@ -544,7 +603,38 @@ function JBCLanding() {
               </button>
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <>
+              <div
+                className="mb-5 flex items-center justify-between text-xs text-muted-foreground"
+                aria-live="polite"
+              >
+                <span>
+                  Mostrando{" "}
+                  <strong className="text-foreground">{filteredEvents.length}</strong>{" "}
+                  {filteredEvents.length === 1 ? "evento" : "eventos"}
+                  {statusFilter !== "all" && (
+                    <>
+                      {" "}·{" "}
+                      <span className="text-accent">
+                        {STATUS_FILTERS.find((s) => s.id === statusFilter)?.label}
+                      </span>
+                    </>
+                  )}
+                </span>
+                {(query || statusFilter !== "all") && (
+                  <button
+                    onClick={() => {
+                      setQuery("");
+                      setStatusFilter("all");
+                    }}
+                    className="text-accent hover:underline font-semibold"
+                  >
+                    Limpar
+                  </button>
+                )}
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+
               {filteredEvents.map((e, i) => (
                 <a
                   key={e.title}
@@ -561,21 +651,29 @@ function JBCLanding() {
                       src={e.image}
                       alt=""
                       loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-105 ${
+                        e.closed ? "grayscale-[45%] group-hover:grayscale-0" : ""
+                      }`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-90" />
+                    {/* subtle bottom-only gradient — keeps posters visible */}
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card/95 to-transparent" />
+                    {/* top scrim for badge legibility */}
+                    <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-background/50 to-transparent" />
                     <div className="absolute top-4 left-4 right-4 flex items-start justify-between gap-2">
                       <span
-                        className={`rounded-full backdrop-blur px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-semibold border ${
+                        className={`inline-flex items-center gap-1.5 rounded-full backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-semibold border shadow-sm ${
                           e.closed
-                            ? "bg-background/80 text-muted-foreground border-border"
-                            : "bg-accent text-accent-foreground border-accent"
+                            ? "bg-background/85 text-muted-foreground border-border"
+                            : "bg-accent text-accent-foreground border-accent shadow-accent/30"
                         }`}
                       >
+                        {!e.closed && (
+                          <span className="h-1.5 w-1.5 rounded-full bg-accent-foreground animate-pulse" />
+                        )}
                         {e.badgeLabel ?? (e.closed ? "Encerrado" : "Inscrições abertas")}
                       </span>
-                      <span className="font-display text-2xl font-black text-background/90 drop-shadow">
-                        0{i + 1}
+                      <span className="font-display text-xl font-black text-foreground bg-background/60 backdrop-blur-md rounded-full h-9 w-9 grid place-items-center border border-border">
+                        {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
@@ -620,7 +718,8 @@ function JBCLanding() {
                   </div>
                 </a>
               ))}
-            </div>
+              </div>
+            </>
           )}
         </div>
       </section>
@@ -735,11 +834,22 @@ function JBCLanding() {
           <div className="mt-12 sm:mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-muted-foreground">
             <div>© {new Date().getFullYear()} Juventude Batista Carioca. Todos os direitos reservados.</div>
             <div className="flex items-center gap-2">
-              <Users className="h-3.5 w-3.5" /> Feito com propósito no Rio de Janeiro
+              Feito com <Heart className="h-3.5 w-3.5 text-accent fill-accent" /> no Rio de Janeiro
             </div>
           </div>
         </div>
       </footer>
+
+      {/* Scroll-to-top FAB */}
+      <button
+        onClick={() => scrollTo("top")}
+        aria-label="Voltar ao topo"
+        className={`fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-40 h-12 w-12 rounded-full bg-accent text-accent-foreground shadow-xl shadow-accent/30 grid place-items-center transition-all duration-300 hover:scale-110 active:scale-95 focus-ring ${
+          showTopBtn ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <ArrowUp className="h-5 w-5" strokeWidth={2.5} />
+      </button>
     </div>
   );
 }
