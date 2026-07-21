@@ -15,6 +15,8 @@ import {
   BookOpen,
   Menu,
   X,
+  Search,
+  SlidersHorizontal,
 } from "lucide-react";
 import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
