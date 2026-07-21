@@ -835,11 +835,22 @@ function JBCLanding() {
           <div className="mt-12 sm:mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-muted-foreground">
             <div>© {new Date().getFullYear()} Juventude Batista Carioca. Todos os direitos reservados.</div>
             <div className="flex items-center gap-2">
-              <Users className="h-3.5 w-3.5" /> Feito com propósito no Rio de Janeiro
+              Feito com <Heart className="h-3.5 w-3.5 text-accent fill-accent" /> no Rio de Janeiro
             </div>
           </div>
         </div>
       </footer>
+
+      {/* Scroll-to-top FAB */}
+      <button
+        onClick={() => scrollTo("top")}
+        aria-label="Voltar ao topo"
+        className={`fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-40 h-12 w-12 rounded-full bg-accent text-accent-foreground shadow-xl shadow-accent/30 grid place-items-center transition-all duration-300 hover:scale-110 active:scale-95 focus-ring ${
+          showTopBtn ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <ArrowUp className="h-5 w-5" strokeWidth={2.5} />
+      </button>
     </div>
   );
 }
