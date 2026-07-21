@@ -248,16 +248,29 @@ function JBCLanding() {
             </span>
           </button>
 
-          <div className="hidden md:flex items-center gap-8 text-sm">
-            {NAV.map((n) => (
-              <button
-                key={n.id}
-                onClick={() => scrollTo(n.id)}
-                className="text-foreground/80 hover:text-foreground transition focus-ring"
-              >
-                {n.label}
-              </button>
-            ))}
+          <div className="hidden md:flex items-center gap-1 text-sm">
+            {NAV.map((n) => {
+              const active = activeSection === n.id;
+              return (
+                <button
+                  key={n.id}
+                  onClick={() => scrollTo(n.id)}
+                  aria-current={active ? "true" : undefined}
+                  className={`relative px-3 py-2 rounded-full transition focus-ring ${
+                    active
+                      ? "text-foreground"
+                      : "text-foreground/70 hover:text-foreground"
+                  }`}
+                >
+                  {n.label}
+                  <span
+                    className={`pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-1 h-[3px] w-1 rounded-full bg-accent transition-all duration-300 ${
+                      active ? "opacity-100 w-6" : "opacity-0 w-1"
+                    }`}
+                  />
+                </button>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-2">
