@@ -31,7 +31,7 @@ const EVENTS = [
     tag: "Audição · Inscrições abertas",
     href: "https://docs.google.com/forms/d/e/1FAIpQLSd0FsnKmxqXmTAxPIzqe5q4IDE4xN-6kiN6hjA0fdijsZzzWw/viewform",
     closed: false,
-    image: null as string | null,
+    image: jbcMusicImg.url,
     meta: null as string | null,
   },
   {
