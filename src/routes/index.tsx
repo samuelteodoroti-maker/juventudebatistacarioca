@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   PlayCircle,
@@ -11,6 +11,7 @@ import {
   Users,
   ChevronDown,
 } from "lucide-react";
+import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: JBCLanding,
@@ -79,8 +80,8 @@ function JBCLanding() {
   return (
     <div className="min-h-screen bg-background text-foreground font-body antialiased selection:bg-foreground selection:text-background">
       <style>{`
-        :root { --font-display: 'Space Grotesk', system-ui, sans-serif; --font-body: 'Inter', system-ui, sans-serif; }
-        .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+        :root { --font-display: 'Montserrat', system-ui, sans-serif; --font-body: 'Inter', system-ui, sans-serif; }
+        .font-display { font-family: var(--font-display); letter-spacing: -0.02em; font-weight: 800; }
         .font-body { font-family: var(--font-body); }
         [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
         [data-reveal].is-visible { opacity: 1; transform: none; }
@@ -100,8 +101,11 @@ function JBCLanding() {
         }`}
       >
         <nav className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
-          <a href="#top" className="font-display text-xl font-bold tracking-tight">
-            JBC<span className="text-muted-foreground">.</span>
+          <a href="#top" className="flex items-center gap-3">
+            <img src={jbcLogo.url} alt="JBC" className="h-10 w-10 rounded-lg object-cover" />
+            <span className="font-display text-xl font-black tracking-tight">
+              JBC<span className="text-accent">.</span>
+            </span>
           </a>
           <div className="hidden md:flex items-center gap-8 text-sm">
             <button onClick={() => scrollTo("historia")} className="hover:text-foreground/70 transition">Nossa História</button>
@@ -110,7 +114,7 @@ function JBCLanding() {
           </div>
           <button
             onClick={() => scrollTo("eventos")}
-            className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-4 py-2 text-sm font-medium hover:opacity-90 transition"
+            className="group inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
           >
             Participar
             <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition" />
@@ -127,17 +131,17 @@ function JBCLanding() {
         </div>
 
         <div className="mx-auto max-w-7xl px-6 lg:px-10 w-full">
-          <div data-reveal className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 backdrop-blur px-3 py-1 text-xs uppercase tracking-widest text-muted-foreground">
+          <div data-reveal className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 backdrop-blur px-3 py-1 text-xs uppercase tracking-widest text-accent font-semibold">
             <Sparkles className="h-3.5 w-3.5" /> 1925 — 2025 · 100 anos
           </div>
 
           <h1
             data-reveal
-            className="font-display mt-6 text-[15vw] leading-[0.9] font-bold sm:text-[10vw] lg:text-[9rem]"
+            className="font-display mt-6 text-[15vw] leading-[0.9] font-black sm:text-[10vw] lg:text-[9rem]"
           >
             Juventude
             <br />
-            <span className="text-muted-foreground">Batista</span> Carioca
+            <span className="text-primary">Batista</span> Carioca
           </h1>
 
           <p data-reveal className="mt-8 max-w-xl text-lg text-muted-foreground">
@@ -148,7 +152,7 @@ function JBCLanding() {
           <div data-reveal className="mt-10 flex flex-wrap items-center gap-4">
             <button
               onClick={() => scrollTo("eventos")}
-              className="group inline-flex items-center gap-3 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium hover:scale-[1.02] active:scale-[0.98] transition"
+              className="group inline-flex items-center gap-3 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-semibold hover:scale-[1.02] active:scale-[0.98] transition shadow-lg shadow-accent/20"
             >
               Nossos Eventos
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
@@ -346,7 +350,10 @@ function JBCLanding() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16">
           <div className="grid md:grid-cols-4 gap-12">
             <div className="md:col-span-2">
-              <div className="font-display text-4xl font-bold">JBC.</div>
+              <div className="flex items-center gap-3">
+                <img src={jbcLogo.url} alt="JBC" className="h-12 w-12 rounded-lg object-cover" />
+                <div className="font-display text-4xl font-black">JBC<span className="text-accent">.</span></div>
+              </div>
               <p className="mt-4 text-sm text-muted-foreground max-w-sm">
                 Juventude Batista Carioca — 100 anos conectando jovens, fé e comunidade.
               </p>
