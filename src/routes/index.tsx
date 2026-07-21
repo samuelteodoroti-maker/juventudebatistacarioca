@@ -326,7 +326,7 @@ function JBCLanding() {
               — Nossa História
             </div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1]">
-              100 anos
+              +100 anos
               <br />
               de uma mesma
               <br />
