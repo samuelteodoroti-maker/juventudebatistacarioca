@@ -825,8 +825,8 @@ function JBCLanding() {
       {/* FOOTER */}
       <footer className="border-t border-border bg-muted/30">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 py-14 sm:py-16">
-          <div className="grid md:grid-cols-4 gap-10 md:gap-12">
-            <div className="md:col-span-2">
+          <div className="grid md:grid-cols-12 gap-10 md:gap-12">
+            <div className="md:col-span-5">
               <div className="flex items-center gap-3">
                 <img src={jbcLogo.url} alt="" className="h-11 w-11 rounded-lg object-cover" />
                 <div className="font-display text-3xl sm:text-4xl font-black">
@@ -837,9 +837,17 @@ function JBCLanding() {
                 Juventude Batista Carioca — +100 anos conectando jovens, fé e comunidade
                 no Rio de Janeiro.
               </p>
+              <a
+                href={ebookAsset.url}
+                download="E-BOOK_JBC_100_anos.pdf"
+                className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 text-accent px-4 py-2 text-xs font-semibold hover:bg-accent hover:text-accent-foreground transition focus-ring"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Baixar e-book dos 100 anos
+              </a>
             </div>
 
-            <div>
+            <div className="md:col-span-3">
               <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4 font-semibold">
                 Navegação
               </div>
@@ -862,7 +870,7 @@ function JBCLanding() {
               </ul>
             </div>
 
-            <div>
+            <div className="md:col-span-4">
               <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4 font-semibold">
                 Social
               </div>
@@ -873,10 +881,13 @@ function JBCLanding() {
                       href={s.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 text-foreground/80 hover:text-accent transition"
+                      className="inline-flex items-center gap-2 text-foreground/80 hover:text-accent transition group"
                     >
                       <s.Icon className="h-4 w-4" />
-                      {s.name}
+                      <span>{s.name}</span>
+                      <span className="text-muted-foreground group-hover:text-accent transition">
+                        · {s.handle}
+                      </span>
                     </a>
                   </li>
                 ))}
