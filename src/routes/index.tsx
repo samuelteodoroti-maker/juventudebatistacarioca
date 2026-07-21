@@ -139,8 +139,49 @@ function useReveal() {
   }, []);
 }
 
-function JBCLanding() {
-  useReveal();
+const THEME_OPTIONS: { id: Theme; label: string; Icon: typeof Sun }[] = [
+  { id: "light", label: "Claro", Icon: Sun },
+  { id: "dark", label: "Escuro", Icon: Moon },
+  { id: "system", label: "Sistema", Icon: Monitor },
+];
+
+function ThemeToggle({ variant = "compact" }: { variant?: "compact" | "full" }) {
+  const { theme, setTheme } = useTheme();
+  return (
+    <div
+      role="radiogroup"
+      aria-label="Tema"
+      className={`inline-flex items-center gap-0.5 rounded-full border border-border bg-card/40 backdrop-blur p-0.5 ${
+        variant === "full" ? "w-full justify-between" : ""
+      }`}
+    >
+      {THEME_OPTIONS.map(({ id, label, Icon }) => {
+        const active = theme === id;
+        return (
+          <button
+            key={id}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            title={label}
+            onClick={() => setTheme(id)}
+            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-semibold transition focus-ring ${
+              active
+                ? "bg-accent text-accent-foreground"
+                : "text-foreground/70 hover:text-foreground"
+            } ${variant === "full" ? "flex-1 justify-center py-2 text-sm" : ""}`}
+          >
+            <Icon className="h-3.5 w-3.5" />
+            <span className={variant === "compact" ? "sr-only sm:not-sr-only" : ""}>
+              {label}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("top");
