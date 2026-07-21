@@ -365,6 +365,12 @@ function JBCLanding() {
               Participar
               <ArrowRight className="h-4 w-4" />
             </button>
+            <div className="mt-4 pt-4 border-t border-border">
+              <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2 font-semibold px-1">
+                Tema
+              </div>
+              <ThemeToggle variant="full" />
+            </div>
           </div>
         </div>
       </header>
