@@ -691,7 +691,7 @@ function JBCLanding() {
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
 
-              {filteredEvents.map((e, i) => (
+              {filteredEvents.map((e) => (
                 <a
                   key={e.title}
                   href={e.href}
