@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   PlayCircle,
@@ -11,6 +11,7 @@ import {
   Users,
   ChevronDown,
 } from "lucide-react";
+import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: JBCLanding,
