@@ -138,8 +138,40 @@
     border-color: var(--color-border);
   }
 
+  html {
+    font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-weight: 900;
+    letter-spacing: -0.035em;
+  }
+
+  button, .font-display {
+    font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.005em;
   }
 }
+
