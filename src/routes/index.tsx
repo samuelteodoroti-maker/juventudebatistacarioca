@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -15,6 +15,8 @@ import {
   BookOpen,
   Menu,
   X,
+  Search,
+  SlidersHorizontal,
 } from "lucide-react";
 import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
@@ -86,6 +88,21 @@ const EVENTS: EventItem[] = [
   },
 ];
 
+type EventStatus = "open" | "upcoming" | "closed";
+
+function getEventStatus(e: EventItem): EventStatus {
+  if (e.badgeLabel?.toLowerCase().includes("breve")) return "upcoming";
+  if (e.closed) return "closed";
+  return "open";
+}
+
+const STATUS_FILTERS: { id: "all" | EventStatus; label: string }[] = [
+  { id: "all", label: "Todos" },
+  { id: "open", label: "Inscrições abertas" },
+  { id: "upcoming", label: "Em breve" },
+  { id: "closed", label: "Encerrado" },
+];
+
 const SOCIALS = [
   { name: "Instagram", handle: "@jbcarioca", href: "https://www.instagram.com/jbcarioca/", Icon: Instagram },
   { name: "Facebook", handle: "/jbcarioca", href: "https://www.facebook.com/jbcarioca", Icon: Facebook },
@@ -139,6 +156,26 @@ function JBCLanding() {
     setMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"all" | EventStatus>("all");
+
+  const filteredEvents = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return EVENTS.filter((e) => {
+      if (statusFilter !== "all" && getEventStatus(e) !== statusFilter) return false;
+      if (!q) return true;
+      return [e.title, e.subtitle, e.tag, e.date, e.location]
+        .filter(Boolean)
+        .some((v) => (v as string).toLowerCase().includes(q));
+    });
+  }, [query, statusFilter]);
+
+  const statusCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: EVENTS.length, open: 0, upcoming: 0, closed: 0 };
+    EVENTS.forEach((e) => (counts[getEventStatus(e)] += 1));
+    return counts;
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-body antialiased selection:bg-accent selection:text-accent-foreground">
@@ -417,82 +454,172 @@ function JBCLanding() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {EVENTS.map((e, i) => (
-              <a
-                key={i}
-                href={e.href}
-                target="_blank"
-                rel="noreferrer"
-                data-reveal
-                className="group relative overflow-hidden rounded-3xl border border-border bg-card flex flex-col hover:border-accent/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1.5 focus-ring"
-                aria-label={`${e.title}${e.closed ? " — inscrições encerradas" : " — inscrever-se"}`}
-              >
-                <div className="relative overflow-hidden aspect-[16/10] bg-muted">
-                  <img
-                    src={e.image}
-                    alt=""
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-90" />
-                  <div className="absolute top-4 left-4 right-4 flex items-start justify-between gap-2">
-                    <span
-                      className={`rounded-full backdrop-blur px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-semibold border ${
-                        e.closed
-                          ? "bg-background/80 text-muted-foreground border-border"
-                          : "bg-accent text-accent-foreground border-accent"
-                      }`}
-                    >
-                      {e.badgeLabel ?? (e.closed ? "Encerrado" : "Inscrições abertas")}
-                    </span>
-                    <span className="font-display text-2xl font-black text-background/90 drop-shadow">
-                      0{i + 1}
-                    </span>
-                  </div>
-                </div>
+          {/* Filtros e busca */}
+          <div
+            data-reveal
+            className="mb-8 sm:mb-10 rounded-3xl border border-border bg-card/60 backdrop-blur p-4 sm:p-5 flex flex-col gap-4"
+          >
+            <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
+              <label className="relative flex-1 group">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(ev) => setQuery(ev.target.value)}
+                  placeholder="Buscar por nome, data, local…"
+                  aria-label="Buscar eventos"
+                  className="w-full h-12 rounded-full bg-background border border-border pl-11 pr-11 text-sm placeholder:text-muted-foreground/70 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition"
+                />
+                {query && (
+                  <button
+                    type="button"
+                    onClick={() => setQuery("")}
+                    aria-label="Limpar busca"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 h-7 w-7 grid place-items-center rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
+              </label>
+              <div className="hidden md:flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground font-semibold">
+                <SlidersHorizontal className="h-4 w-4" /> Filtrar
+              </div>
+            </div>
 
-                <div className="relative p-6 sm:p-7 flex-1 flex flex-col">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">
-                    {e.tag}
-                  </div>
-                  <h3 className="font-display text-xl sm:text-2xl font-bold leading-tight mt-2">
-                    {e.title}
-                  </h3>
-
-                  {(e.date || e.location) && (
-                    <div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">
-                      {e.date && (
-                        <div className="flex items-center gap-2">
-                          <Calendar className="h-3.5 w-3.5 shrink-0 text-accent" />
-                          <span>{e.date}</span>
-                        </div>
-                      )}
-                      {e.location && (
-                        <div className="flex items-start gap-2">
-                          <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
-                          <span>{e.location}</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  <p className="mt-4 text-sm text-muted-foreground leading-relaxed line-clamp-4">
-                    {e.subtitle}
-                  </p>
-
-                  <div
-                    className={`mt-6 inline-flex items-center gap-2 text-sm font-semibold ${
-                      e.closed ? "text-muted-foreground" : "text-accent"
+            <div
+              role="tablist"
+              aria-label="Filtrar por status"
+              className="flex flex-wrap gap-2"
+            >
+              {STATUS_FILTERS.map((f) => {
+                const active = statusFilter === f.id;
+                const count = statusCounts[f.id] ?? 0;
+                return (
+                  <button
+                    key={f.id}
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setStatusFilter(f.id)}
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border transition focus-ring ${
+                      active
+                        ? "bg-accent text-accent-foreground border-accent shadow-md shadow-accent/20"
+                        : "bg-background text-foreground/80 border-border hover:border-accent/50 hover:text-foreground"
                     }`}
                   >
-                    {e.ctaLabel ?? (e.closed ? "Ver detalhes" : "Inscrever-se agora")}
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
-                  </div>
-                </div>
-              </a>
-            ))}
+                    {f.label}
+                    <span
+                      className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                        active ? "bg-accent-foreground/15" : "bg-muted text-muted-foreground"
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
+
+          {filteredEvents.length === 0 ? (
+            <div
+              data-reveal
+              className="rounded-3xl border border-dashed border-border bg-card/40 py-16 px-6 text-center"
+            >
+              <div className="mx-auto grid place-items-center h-14 w-14 rounded-full bg-muted text-muted-foreground mb-4">
+                <Search className="h-6 w-6" />
+              </div>
+              <h3 className="font-display text-xl font-bold">Nenhum evento encontrado</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Tente outra busca ou remova os filtros aplicados.
+              </p>
+              <button
+                onClick={() => {
+                  setQuery("");
+                  setStatusFilter("all");
+                }}
+                className="mt-5 inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold hover:border-accent hover:text-accent transition"
+              >
+                Limpar filtros
+              </button>
+            </div>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {filteredEvents.map((e, i) => (
+                <a
+                  key={e.title}
+                  href={e.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-reveal
+                  className="group relative overflow-hidden rounded-3xl border border-border bg-card flex flex-col hover:border-accent/60 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-1.5 focus-ring"
+                  aria-label={`${e.title}${e.closed ? " — inscrições encerradas" : " — inscrever-se"}`}
+                >
+                  <div className="relative overflow-hidden aspect-[16/10] bg-muted">
+                    <img
+                      src={e.image}
+                      alt=""
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-90" />
+                    <div className="absolute top-4 left-4 right-4 flex items-start justify-between gap-2">
+                      <span
+                        className={`rounded-full backdrop-blur px-3 py-1 text-[10px] uppercase tracking-[0.18em] font-semibold border ${
+                          e.closed
+                            ? "bg-background/80 text-muted-foreground border-border"
+                            : "bg-accent text-accent-foreground border-accent"
+                        }`}
+                      >
+                        {e.badgeLabel ?? (e.closed ? "Encerrado" : "Inscrições abertas")}
+                      </span>
+                      <span className="font-display text-2xl font-black text-background/90 drop-shadow">
+                        0{i + 1}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="relative p-6 sm:p-7 flex-1 flex flex-col">
+                    <div className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">
+                      {e.tag}
+                    </div>
+                    <h3 className="font-display text-xl sm:text-2xl font-bold leading-tight mt-2">
+                      {e.title}
+                    </h3>
+
+                    {(e.date || e.location) && (
+                      <div className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">
+                        {e.date && (
+                          <div className="flex items-center gap-2">
+                            <Calendar className="h-3.5 w-3.5 shrink-0 text-accent" />
+                            <span>{e.date}</span>
+                          </div>
+                        )}
+                        {e.location && (
+                          <div className="flex items-start gap-2">
+                            <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                            <span>{e.location}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    <p className="mt-4 text-sm text-muted-foreground leading-relaxed line-clamp-4">
+                      {e.subtitle}
+                    </p>
+
+                    <div
+                      className={`mt-6 inline-flex items-center gap-2 text-sm font-semibold ${
+                        e.closed ? "text-muted-foreground" : "text-accent"
+                      }`}
+                    >
+                      {e.ctaLabel ?? (e.closed ? "Ver detalhes" : "Inscrever-se agora")}
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
