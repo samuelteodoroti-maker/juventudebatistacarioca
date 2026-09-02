@@ -569,7 +569,7 @@ function JBCLanding() {
           {/* Filtros e busca */}
           <div
             data-reveal
-            className="mb-8 sm:mb-10 rounded-3xl border border-border bg-card/60 backdrop-blur p-4 sm:p-5 flex flex-col gap-4"
+            className="sticky top-16 z-30 mb-8 sm:mb-10 rounded-3xl border border-border bg-card/80 supports-[backdrop-filter]:bg-card/60 backdrop-blur-xl p-4 sm:p-5 flex flex-col gap-4 shadow-lg shadow-background/20"
           >
             <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
               <label className="relative flex-1 group">
@@ -613,10 +613,10 @@ function JBCLanding() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setStatusFilter(f.id)}
-                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border transition focus-ring ${
+                    className={`inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold border transition-all duration-200 active:scale-[0.97] focus-ring ${
                       active
                         ? "bg-accent text-accent-foreground border-accent shadow-md shadow-accent/20"
-                        : "bg-background text-foreground/80 border-border hover:border-accent/50 hover:text-foreground"
+                        : "bg-background text-foreground/80 border-border hover:border-accent/50 hover:text-foreground hover:-translate-y-px"
                     }`}
                   >
                     {f.label}
@@ -735,7 +735,7 @@ function JBCLanding() {
                     <div className="text-[11px] uppercase tracking-[0.18em] text-accent font-semibold">
                       {e.tag}
                     </div>
-                    <h3 className="font-display text-xl sm:text-2xl font-bold leading-tight mt-2">
+                    <h3 className="font-display text-xl sm:text-2xl font-bold leading-tight mt-2 group-hover:text-accent transition-colors duration-300">
                       {e.title}
                     </h3>
 
@@ -756,12 +756,12 @@ function JBCLanding() {
                       </div>
                     )}
 
-                    <p className="mt-4 text-sm text-muted-foreground leading-relaxed line-clamp-4">
+                    <p className="mt-4 text-sm text-muted-foreground leading-relaxed line-clamp-3">
                       {e.subtitle}
                     </p>
 
                     <div
-                      className={`mt-6 inline-flex items-center gap-2 text-sm font-semibold ${
+                      className={`mt-auto pt-6 inline-flex items-center gap-2 text-sm font-semibold ${
                         e.closed ? "text-muted-foreground" : "text-accent"
                       }`}
                     >
@@ -849,9 +849,9 @@ function JBCLanding() {
               <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4 font-semibold">
                 Navegação
               </div>
-              <ul className="space-y-2.5 text-sm">
+              <ul className="space-y-1 text-sm">
                 <li>
-                  <button onClick={() => scrollTo("top")} className="text-foreground/80 hover:text-accent transition">
+                  <button onClick={() => scrollTo("top")} className="inline-flex min-h-9 items-center rounded-md text-foreground/80 hover:text-accent transition focus-ring">
                     Início
                   </button>
                 </li>
@@ -859,7 +859,7 @@ function JBCLanding() {
                   <li key={n.id}>
                     <button
                       onClick={() => scrollTo(n.id)}
-                      className="text-foreground/80 hover:text-accent transition"
+                      className="inline-flex min-h-9 items-center rounded-md text-foreground/80 hover:text-accent transition focus-ring"
                     >
                       {n.label}
                     </button>
@@ -872,14 +872,14 @@ function JBCLanding() {
               <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4 font-semibold">
                 Social
               </div>
-              <ul className="space-y-2.5 text-sm">
+              <ul className="space-y-1 text-sm">
                 {SOCIALS.map((s) => (
                   <li key={s.name}>
                     <a
                       href={s.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 text-foreground/80 hover:text-accent transition group"
+                      className="inline-flex min-h-9 items-center gap-2 rounded-md text-foreground/80 hover:text-accent transition group focus-ring"
                     >
                       <s.Icon className="h-4 w-4" />
                       <span>{s.name}</span>
