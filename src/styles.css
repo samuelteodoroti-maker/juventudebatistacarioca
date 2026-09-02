@@ -296,6 +296,21 @@
   contain-intrinsic-size: 1px 900px;
 }
 
+/* Consistent interactive feedback across links, buttons and cards */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.group:active {
+  transition-duration: 0.1s;
+}
+
+/* Sticky filter bar should clear the fixed header */
+section[id] > .mx-auto :where(.sticky) {
+  scroll-margin-top: 9rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1; transform: none; transition: none; }
