@@ -42,12 +42,14 @@ type EventItem = {
   closed: boolean;
   image: string;
   date?: string;
+  /** ISO date (YYYY-MM-DD) of the last day; after it the event shows as Encerrado. */
+  endDate?: string;
   location?: string;
   badgeLabel?: string;
   ctaLabel?: string;
 };
 
-const EVENTS: EventItem[] = [
+const RAW_EVENTS: EventItem[] = [
   {
     title: "Vigília da JBC · Somos Um",
     subtitle:
@@ -57,6 +59,7 @@ const EVENTS: EventItem[] = [
     closed: false,
     image: vigiliaImg.url,
     date: "31 de julho · 22h às 6h",
+    endDate: "2026-08-01",
     location: "Igreja Batista do Méier · Rua Hermengarda, 31 — RJ",
     badgeLabel: "Em breve",
     ctaLabel: "Ver local no mapa",
@@ -79,6 +82,7 @@ const EVENTS: EventItem[] = [
     closed: true,
     image: copaJbcImg.url,
     date: "16 de maio",
+    endDate: "2026-05-16",
     location: "1ª Igreja Batista do Rio · Estácio",
   },
   {
@@ -90,14 +94,29 @@ const EVENTS: EventItem[] = [
     closed: true,
     image: temposDePazImg.url,
     date: "19, 20 e 21 de junho",
+    endDate: "2026-06-21",
   },
 ];
 
 type EventStatus = "open" | "upcoming" | "closed";
 
+/** Marks events as closed automatically once their end date has passed. */
+function applyDates(list: EventItem[], now = new Date()): EventItem[] {
+  return list.map((e) => {
+    if (!e.endDate) return e;
+    const end = new Date(`${e.endDate}T23:59:59-03:00`);
+    if (now > end) {
+      return { ...e, closed: true, badgeLabel: undefined, ctaLabel: e.closed ? e.ctaLabel : "Ver detalhes" };
+    }
+    return e;
+  });
+}
+
+const EVENTS: EventItem[] = applyDates(RAW_EVENTS);
+
 function getEventStatus(e: EventItem): EventStatus {
-  if (e.badgeLabel?.toLowerCase().includes("breve")) return "upcoming";
   if (e.closed) return "closed";
+  if (e.badgeLabel?.toLowerCase().includes("breve")) return "upcoming";
   return "open";
 }
 
