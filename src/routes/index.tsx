@@ -332,9 +332,6 @@ function JBCLanding() {
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="hidden md:block">
-              <ThemeToggle />
-            </div>
             <button
               onClick={() => scrollTo("eventos")}
               className="hidden sm:inline-flex group items-center gap-2 rounded-full bg-accent text-accent-foreground px-4 py-2 min-h-10 text-sm font-semibold hover:opacity-90 active:scale-[0.97] transition focus-ring"
@@ -344,7 +341,7 @@ function JBCLanding() {
             </button>
             <button
               onClick={() => setMenuOpen((v) => !v)}
-              className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground hover:bg-muted/50 active:scale-95 transition focus-ring"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground hover:bg-muted/50 active:scale-95 transition focus-ring"
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menuOpen}
             >
@@ -355,11 +352,11 @@ function JBCLanding() {
 
         {/* Mobile menu */}
         <div
-          className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${
+          className={`overflow-hidden transition-[max-height,opacity] duration-300 ${
             menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="px-5 pb-6 pt-2 flex flex-col gap-1">
+          <div className="px-5 pb-6 pt-2 flex flex-col gap-1 md:ml-auto md:max-w-sm md:px-6 lg:mr-4">
             {NAV.map((n) => (
               <button
                 key={n.id}
