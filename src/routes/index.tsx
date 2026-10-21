@@ -325,14 +325,14 @@ function JBCLanding() {
             </div>
             <button
               onClick={() => scrollTo("eventos")}
-              className="hidden sm:inline-flex group items-center gap-2 rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition focus-ring"
+              className="hidden sm:inline-flex group items-center gap-2 rounded-full bg-accent text-accent-foreground px-4 py-2 min-h-10 text-sm font-semibold hover:opacity-90 active:scale-[0.97] transition focus-ring"
             >
               Participar
               <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition" />
             </button>
             <button
               onClick={() => setMenuOpen((v) => !v)}
-              className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground focus-ring"
+              className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground hover:bg-muted/50 active:scale-95 transition focus-ring"
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menuOpen}
             >
@@ -360,7 +360,7 @@ function JBCLanding() {
             ))}
             <button
               onClick={() => scrollTo("eventos")}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-3 text-sm font-semibold"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-3 min-h-12 text-sm font-semibold active:scale-[0.98] transition focus-ring"
             >
               Participar
               <ArrowRight className="h-4 w-4" />
@@ -650,7 +650,7 @@ function JBCLanding() {
                   setQuery("");
                   setStatusFilter("all");
                 }}
-                className="mt-5 inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold hover:border-accent hover:text-accent transition"
+                className="mt-5 inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 min-h-11 text-sm font-semibold hover:border-accent hover:text-accent active:scale-[0.97] transition focus-ring"
               >
                 Limpar filtros
               </button>
@@ -838,7 +838,7 @@ function JBCLanding() {
               <a
                 href={ebookAsset.url}
                 download="E-BOOK_JBC_100_anos.pdf"
-                className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 text-accent px-4 py-2 text-xs font-semibold hover:bg-accent hover:text-accent-foreground transition focus-ring"
+                className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 text-accent px-4 py-2 min-h-11 text-xs font-semibold active:scale-[0.97] hover:bg-accent hover:text-accent-foreground transition focus-ring"
               >
                 <Download className="h-3.5 w-3.5" />
                 Baixar e-book dos 100 anos
