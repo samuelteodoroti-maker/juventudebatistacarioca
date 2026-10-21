@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Music, Megaphone, CalendarDays, Trophy, HeartHandshake, Flame } from "lucide-react";
+import { ArrowLeft, ArrowRight, Music, Megaphone, GraduationCap, Users, Trophy, HeartHandshake, Flame } from "lucide-react";
 import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import jbcMusicImg from "@/assets/jbc-music.jpg.asset.json";
 
@@ -22,12 +22,13 @@ export const Route = createFileRoute("/equipes")({
 });
 
 const COORDS = [
-  { icon: Music, name: "Louvor · JBC Music", text: "Conduz a adoração nos encontros e eventos da JBC: ministração, ensaios, banda e vocal." },
-  { icon: Megaphone, name: "Comunicação", text: "Cuida das redes sociais, artes, fotos, vídeos e de toda a divulgação dos eventos." },
-  { icon: CalendarDays, name: "Eventos", text: "Planeja e executa a logística dos encontros: recepção, estrutura, cronograma e apoio no dia." },
+  { icon: Music, name: "Adoração e Arte", text: "Conduz a adoração e as expressões artísticas da JBC: música, ministração, teatro e dança nos encontros e eventos." },
+  { icon: HeartHandshake, name: "Missões", text: "Lidera projetos missionários, como o Tempos de Paz, e ações de serviço e evangelismo na cidade." },
+  { icon: Flame, name: "Intercessão e Devoção", text: "Sustenta em oração cada projeto e pessoa, promovendo vigílias e uma vida devocional constante." },
+  { icon: GraduationCap, name: "Capacitação", text: "Forma e treina líderes e jovens com cursos, workshops e conteúdos para crescer na fé e no serviço." },
   { icon: Trophy, name: "Esportes", text: "Organiza a Copa JBC e outras ações esportivas que reúnem a juventude em comunhão." },
-  { icon: HeartHandshake, name: "Missões e Ação Social", text: "Lidera projetos missionários, como o Tempos de Paz, e ações de serviço à comunidade." },
-  { icon: Flame, name: "Intercessão", text: "Sustenta em oração cada projeto, evento e pessoa, e organiza momentos como a Vigília." },
+  { icon: Megaphone, name: "Comunicação", text: "Cuida das redes sociais, artes, fotos, vídeos e de toda a divulgação da JBC." },
+  { icon: Users, name: "Universitários", text: "Conecta e acompanha jovens universitários, levando fé e comunhão para dentro dos campi." },
 ];
 
 function EquipesPage() {
