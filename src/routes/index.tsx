@@ -326,6 +326,9 @@ function JBCLanding() {
                 </button>
               );
             })}
+            <Link to="/equipes" className="px-3 py-2 rounded-full text-foreground/70 hover:text-foreground transition focus-ring">
+              Equipes
+            </Link>
           </div>
 
           <div className="flex items-center gap-2">
@@ -367,6 +370,10 @@ function JBCLanding() {
                 <ArrowRight className="h-4 w-4 opacity-60" />
               </button>
             ))}
+            <Link to="/equipes" className="flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium hover:bg-muted/50 transition">
+              Equipes
+              <ArrowRight className="h-4 w-4 opacity-60" />
+            </Link>
             <button
               onClick={() => scrollTo("eventos")}
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-3 min-h-12 text-sm font-semibold active:scale-[0.98] transition focus-ring"
@@ -874,6 +881,11 @@ function JBCLanding() {
                     </button>
                   </li>
                 ))}
+                <li>
+                  <Link to="/equipes" className="inline-flex min-h-9 items-center rounded-md text-foreground/80 hover:text-accent transition focus-ring">
+                    Equipes
+                  </Link>
+                </li>
               </ul>
             </div>
 
