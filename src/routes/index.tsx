@@ -332,9 +332,6 @@ function JBCLanding() {
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="hidden md:block">
-              <ThemeToggle />
-            </div>
             <button
               onClick={() => scrollTo("eventos")}
               className="hidden sm:inline-flex group items-center gap-2 rounded-full bg-accent text-accent-foreground px-4 py-2 min-h-10 text-sm font-semibold hover:opacity-90 active:scale-[0.97] transition focus-ring"
@@ -344,7 +341,7 @@ function JBCLanding() {
             </button>
             <button
               onClick={() => setMenuOpen((v) => !v)}
-              className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground hover:bg-muted/50 active:scale-95 transition focus-ring"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border text-foreground hover:bg-muted/50 active:scale-95 transition focus-ring"
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menuOpen}
             >
@@ -355,33 +352,33 @@ function JBCLanding() {
 
         {/* Mobile menu */}
         <div
-          className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${
+          className={`overflow-hidden transition-[max-height,opacity] duration-300 ${
             menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="px-5 pb-6 pt-2 flex flex-col gap-1">
+          <div className="px-5 pb-6 pt-2 flex flex-col gap-1 md:ml-auto md:max-w-sm md:px-6 lg:mr-4">
             {NAV.map((n) => (
               <button
                 key={n.id}
                 onClick={() => scrollTo(n.id)}
-                className="flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium hover:bg-muted/50 transition"
+                className="md:hidden flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium hover:bg-muted/50 transition"
               >
                 {n.label}
                 <ArrowRight className="h-4 w-4 opacity-60" />
               </button>
             ))}
-            <Link to="/equipes" className="font-display flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium hover:bg-muted/50 transition">
+            <Link to="/equipes" className="font-display md:hidden flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium hover:bg-muted/50 transition">
               Equipes
               <ArrowRight className="h-4 w-4 opacity-60" />
             </Link>
             <button
               onClick={() => scrollTo("eventos")}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-3 min-h-12 text-sm font-semibold active:scale-[0.98] transition focus-ring"
+              className="md:hidden mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-3 min-h-12 text-sm font-semibold active:scale-[0.98] transition focus-ring"
             >
               Participar
               <ArrowRight className="h-4 w-4" />
             </button>
-            <div className="mt-4 pt-4 border-t border-border">
+            <div className="mt-4 pt-4 border-t border-border md:mt-0 md:pt-0 md:border-0">
               <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-2 font-semibold px-1">
                 Tema
               </div>
