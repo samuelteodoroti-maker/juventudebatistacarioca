@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
@@ -27,7 +27,6 @@ import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
 import temposDePazImg from "@/assets/tempos-de-paz.png.asset.json";
 import copaJbcImg from "@/assets/copa-jbc.png.asset.json";
-import jbcMusicImg from "@/assets/jbc-music.jpg.asset.json";
 import vigiliaImg from "@/assets/vigilia-jbc.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -63,15 +62,6 @@ const RAW_EVENTS: EventItem[] = [
     location: "Igreja Batista do Méier · Rua Hermengarda, 31 — RJ",
     badgeLabel: "Em breve",
     ctaLabel: "Ver local no mapa",
-  },
-  {
-    title: "Audição JBC Music",
-    subtitle:
-      "Não é sobre palco — é sobre altar, adoração e um coração disponível para servir. Se você tem entre 18 e 40 anos e é membro de uma igreja batista filiada à Convenção Batista Carioca, esse lugar pode ser seu.",
-    tag: "Audição",
-    href: "https://docs.google.com/forms/d/e/1FAIpQLSd0FsnKmxqXmTAxPIzqe5q4IDE4xN-6kiN6hjA0fdijsZzzWw/viewform",
-    closed: false,
-    image: jbcMusicImg.url,
   },
   {
     title: "Copa JBC · Campeonato de Futsal",
@@ -336,6 +326,9 @@ function JBCLanding() {
                 </button>
               );
             })}
+            <Link to="/equipes" className="px-3 py-2 rounded-full text-foreground/70 hover:text-foreground transition focus-ring">
+              Equipes
+            </Link>
           </div>
 
           <div className="flex items-center gap-2">
@@ -377,6 +370,10 @@ function JBCLanding() {
                 <ArrowRight className="h-4 w-4 opacity-60" />
               </button>
             ))}
+            <Link to="/equipes" className="flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium hover:bg-muted/50 transition">
+              Equipes
+              <ArrowRight className="h-4 w-4 opacity-60" />
+            </Link>
             <button
               onClick={() => scrollTo("eventos")}
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-3 min-h-12 text-sm font-semibold active:scale-[0.98] transition focus-ring"
@@ -884,6 +881,11 @@ function JBCLanding() {
                     </button>
                   </li>
                 ))}
+                <li>
+                  <Link to="/equipes" className="inline-flex min-h-9 items-center rounded-md text-foreground/80 hover:text-accent transition focus-ring">
+                    Equipes
+                  </Link>
+                </li>
               </ul>
             </div>
 
