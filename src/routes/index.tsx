@@ -326,7 +326,7 @@ function JBCLanding() {
                 </button>
               );
             })}
-            <Link to="/equipes" className="px-3 py-2 rounded-full text-foreground/70 hover:text-foreground transition focus-ring">
+            <Link to="/equipes" className="font-display px-3 py-2 rounded-full text-foreground/70 hover:text-foreground transition focus-ring">
               Equipes
             </Link>
           </div>
@@ -370,7 +370,7 @@ function JBCLanding() {
                 <ArrowRight className="h-4 w-4 opacity-60" />
               </button>
             ))}
-            <Link to="/equipes" className="flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium hover:bg-muted/50 transition">
+            <Link to="/equipes" className="font-display flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium hover:bg-muted/50 transition">
               Equipes
               <ArrowRight className="h-4 w-4 opacity-60" />
             </Link>
@@ -882,7 +882,7 @@ function JBCLanding() {
                   </li>
                 ))}
                 <li>
-                  <Link to="/equipes" className="inline-flex min-h-9 items-center rounded-md text-foreground/80 hover:text-accent transition focus-ring">
+                  <Link to="/equipes" className="font-display inline-flex min-h-9 items-center rounded-md text-foreground/80 hover:text-accent transition focus-ring">
                     Equipes
                   </Link>
                 </li>
