@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
@@ -27,7 +27,6 @@ import jbcLogo from "@/assets/jbc-logo.png.asset.json";
 import ebookAsset from "@/assets/ebook-jbc-100-anos.pdf.asset.json";
 import temposDePazImg from "@/assets/tempos-de-paz.png.asset.json";
 import copaJbcImg from "@/assets/copa-jbc.png.asset.json";
-import jbcMusicImg from "@/assets/jbc-music.jpg.asset.json";
 import vigiliaImg from "@/assets/vigilia-jbc.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -63,15 +62,6 @@ const RAW_EVENTS: EventItem[] = [
     location: "Igreja Batista do Méier · Rua Hermengarda, 31 — RJ",
     badgeLabel: "Em breve",
     ctaLabel: "Ver local no mapa",
-  },
-  {
-    title: "Audição JBC Music",
-    subtitle:
-      "Não é sobre palco — é sobre altar, adoração e um coração disponível para servir. Se você tem entre 18 e 40 anos e é membro de uma igreja batista filiada à Convenção Batista Carioca, esse lugar pode ser seu.",
-    tag: "Audição",
-    href: "https://docs.google.com/forms/d/e/1FAIpQLSd0FsnKmxqXmTAxPIzqe5q4IDE4xN-6kiN6hjA0fdijsZzzWw/viewform",
-    closed: false,
-    image: jbcMusicImg.url,
   },
   {
     title: "Copa JBC · Campeonato de Futsal",
